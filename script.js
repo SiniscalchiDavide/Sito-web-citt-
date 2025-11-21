@@ -58,11 +58,11 @@ function conferma() {
     if (error) {
         alert(errorMessage);
         return;
-    }else{
-        alert("Grazie per esserti registrato, " + nome + "!");
+    } else {
+        alert("Grazie per esserti registrato, " + nome + "!");    
+        window.location.href = 'pagina2.html';
     }
-    //quando clicchi indietro nela sezione del ripilogo ricarica la pagina iniziale
-    document.body.innerHTML = output + '<button onclick="window.location.reload()">Indietro</button>';
+
     document.getElementById("submitButton").disabled = false;
 }
 
