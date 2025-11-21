@@ -60,7 +60,7 @@ function conferma() {
         return;
     } else {
         alert("Grazie per esserti registrato, " + nome + "!");    
-        window.location.href = 'pagina2.html';
+        window.location.href = '../index/Firenze.html';
     }
 
     document.getElementById("submitButton").disabled = false;
