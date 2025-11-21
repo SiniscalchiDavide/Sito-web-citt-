@@ -65,3 +65,38 @@ function conferma() {
     document.body.innerHTML = output + '<button onclick="window.location.reload()">Indietro</button>';
     document.getElementById("submitButton").disabled = false;
 }
+
+async function loadCountriesFromFile(jsonPath = 'countries.json') {
+    try {
+        const res = await fetch(jsonPath);
+        if (!res.ok) throw new Error('Impossibile caricare ' + jsonPath);
+        const countries = await res.json(); // aspettati array di oggetti
+        const select = document.getElementById('country');
+        if (!select) return;
+        // svuota e aggiungi option iniziale
+        select.innerHTML = '<option value="">Seleziona un paese</option>';
+        // filtra solo oggetti che hanno esattamente la chiave 'it' (minuscola)
+        const filtered = Array.isArray(countries)
+            ? countries.filter(item => item && typeof item === 'object' && Object.prototype.hasOwnProperty.call(item, 'it'))
+            : [];
+        // ordina alfabeticamente per nome italiano
+        filtered.sort((a, b) => (a.it || '').localeCompare(b.it || '', 'it'));
+        filtered.forEach(item => {
+            const name = item.it;
+            // valore utile per il form: preferisci alpha2/alpha3 se presenti, altrimenti il nome
+            const value = item.alpha2 || item.alpha3 || name;
+            if (!name) return;
+            const opt = document.createElement('option');
+            opt.value = value;
+            opt.textContent = name;
+            select.appendChild(opt);
+        });
+    } catch (err) {
+        console.error(err);
+        const select = document.getElementById('country');
+        if (select) select.innerHTML = '<option value="">Errore caricamento paesi</option>';
+    }
+}
+
+// chiama il loader al caricamento pagina
+document.addEventListener('DOMContentLoaded', () => loadCountriesFromFile());
