@@ -116,7 +116,7 @@ function login() {
 
     if (user) {
         setCurrentUser(user.email);
-        alert("Login effettuato!");
+        alert("Account creato!");
         window.location.href = '../index/Firenze.html';
     } else {
         alert("Email o password non corretti.");
