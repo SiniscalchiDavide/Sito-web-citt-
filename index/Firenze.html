@@ -5,28 +5,108 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Firenze - Home</title>
     <style>
-        :root{--accent:#9b3d2b;--bg:#f7f5f2;--card:#ffffff}
-        body{margin:0;font-family:Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#222}
-        header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:linear-gradient(90deg,#fff,#f3ece8);box-shadow:0 2px 6px rgba(0,0,0,0.05)}
-        .brand{display:flex;align-items:center;gap:12px}
-        .brand img{width:52px;height:52px;object-fit:cover;border-radius:8px}
-        nav{display:flex;gap:12px;align-items:center}
-        .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:600}
-        .btn.secondary{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-        .hero{display:flex;gap:24px;align-items:center;padding:28px;max-width:1100px;margin:20px auto}
+        /* CSS semplificato */
+        :root{
+            --accent:#9b3d2b;
+            --bg:#f7f5f2;
+            --card:#fff;
+            --text:#222;
+        }
+
+        *{box-sizing:border-box}
+        body{
+            margin:0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            line-height:1.4;
+        }
+
+        /* Header semplice e sticky */
+        header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:12px 16px;
+            background:linear-gradient(90deg,#fff,#f3ece8);
+            position:sticky;
+            top:0;
+            z-index:1000;
+            border-bottom:1px solid rgba(0,0,0,0.04);
+        }
+
+        .brand{display:flex;align-items:center;gap:10px}
+        .brand img{width:48px;height:48px;border-radius:8px;object-fit:cover}
+
+        /* Aggiunto ID per manipolarlo con JS */
+        nav{display:flex;gap:8px;align-items:center}
+
+        .btn{
+            background:var(--accent);
+            color:#fff;
+            padding:8px 12px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:600;
+            display:inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn.secondary{
+            background:transparent;
+            color:var(--accent);
+            border:1px solid var(--accent);
+        }
+
+        /* Stile per il messaggio di benvenuto */
+        .welcome-msg {
+            font-weight: bold;
+            margin-right: 10px;
+            color: var(--text);
+        }
+
+        /* Hero e layout principale */
+        .hero{
+            display:flex;
+            gap:20px;
+            align-items:center;
+            padding:20px;
+            max-width:1100px;
+            margin:18px auto;
+        }
         .hero .intro{flex:1}
-        .hero h1{margin:0 0 8px;font-size:28px}
-        .hero p{margin:0;color:#444}
-        .hero img{width:360px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1100px;margin:18px auto;padding:0 18px 40px}
-        .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,0.06);display:flex;flex-direction:column}
+        .hero img{width:360px;max-width:40%;height:auto;border-radius:10px;display:block}
+
+        /* Grid semplificata */
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:16px;
+            max-width:1100px;
+            margin:12px auto 40px;
+            padding:0 16px;
+        }
+
+        .card{
+            background:var(--card);
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 4px 10px rgba(0,0,0,0.05);
+            display:flex;
+            flex-direction:column;
+        }
         .card img{width:100%;height:140px;object-fit:cover}
-        .card .content{padding:12px 14px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-        .card h3{margin:0 0 8px;font-size:18px}
-        .card p{margin:0 0 12px;color:#555;font-size:14px}
-        .card .actions{display:flex;gap:8px}
-        footer{max-width:1100px;margin:10px auto 40px;padding:12px 18px;color:#666;font-size:14px}
-        @media (max-width:640px){.hero{flex-direction:column-reverse}.hero img{width:100%;height:200px}}
+        .card .content{padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+
+        footer{max-width:1100px;margin:10px auto 40px;padding:12px 16px;color:#666;font-size:14px}
+
+        /* Mobile */
+        @media (max-width:640px){
+            .hero{flex-direction:column-reverse;padding:14px}
+            .hero img{width:100%;max-width:100%;height:auto}
+            header{padding:10px 12px}
+        }
     </style>
 </head>
 <body>
@@ -37,8 +117,10 @@
                 <strong>Firenze</strong><br><small>Città d'arte e sapori</small>
             </div>
         </div>
-        <nav>
+        <!-- Aggiunto ID "user-nav" per trovarlo con Javascript -->
+        <nav id="user-nav">
             <a class="btn" href="../Login/Login.html" aria-label="Accedi">Accedi</a>
+            <a class="btn secondary" href="../Account/Crea_account.html" aria-label="Crea account" style="margin-left:8px">Crea account</a>
         </nav>
     </header>
 
@@ -56,7 +138,7 @@
         </section>
 
         <section class="grid" aria-label="Sezioni principali">
-            <article class="card">
+            <div class="card" role="article">
                 <img src="images/cibi.jpg" alt="Piatti tipici fiorentini">
                 <div class="content">
                     <div>
@@ -67,9 +149,9 @@
                         <a class="btn" href="cibi.html">Vai a Cibi</a>
                     </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="card">
+            <div class="card" role="article">
                 <img src="images/luoghi.jpg" alt="Ponte Vecchio e Arno">
                 <div class="content">
                     <div>
@@ -80,9 +162,9 @@
                         <a class="btn" href="luoghi.html">Vai a Luoghi</a>
                     </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="card">
+            <div class="card" role="article">
                 <img src="images/eventi.jpg" alt="Evento culturale a Firenze">
                 <div class="content">
                     <div>
@@ -93,9 +175,9 @@
                         <a class="btn" href="eventi.html">Vai a Eventi</a>
                     </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="card">
+            <div class="card" role="article">
                 <img src="images/gite.jpg" alt="Gite nei dintorni di Firenze">
                 <div class="content">
                     <div>
@@ -106,9 +188,9 @@
                         <a class="btn" href="gite.html">Vai a Gite</a>
                     </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="card">
+            <div class="card" role="article">
                 <img src="images/personaggi.jpg" alt="Ritratti di personaggi storici">
                 <div class="content">
                     <div>
@@ -119,13 +201,18 @@
                         <a class="btn" href="personaggi.html">Vai a Personaggi</a>
                     </div>
                 </div>
-            </article>
+            </div>
         </section>
     </main>
 
     <footer>
         <div>© Firenze - Pagina demo. Sostituisci immagini e testi con contenuti reali.</div>
     </footer>
+
+    <!-- COLLEGA LO SCRIPT: Assicurati che il percorso sia corretto! 
+         Se lo script è nella cartella "Login" parallela a "index", questo percorso va bene. 
+         Se lo script è nella stessa cartella, metti solo src="script.js" -->
+    <script src="../Account/script.js"></script>
 
 </body>
 </html>
