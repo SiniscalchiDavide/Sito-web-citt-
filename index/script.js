@@ -6,7 +6,6 @@ function conferma() {
     var conpassword = document.getElementById("conpassword").value;
     var eta = document.getElementById("age").value;
     var genere = document.querySelector('input[name="gender"]:checked');
-    var interessi = document.querySelectorAll('input[name="interests"]:checked');
     var paese = document.getElementById("country").value;
     var terms = document.getElementById("terms").checked;
     var birthdate = document.getElementById("birthdate").value;

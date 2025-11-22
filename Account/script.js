@@ -1,19 +1,20 @@
 // --- FUNZIONE DI REGISTRAZIONE (conferma) ---
 function conferma() {
     // 1. Recupero dei valori dal form
-    var nome = document.getElementById("name") ? document.getElementById("name").value.trim() : '';
-    var cognome = document.getElementById("cognome") ? document.getElementById("cognome").value.trim() : '';
-    var email = document.getElementById("email") ? document.getElementById("email").value.trim() : '';
-    var password = document.getElementById("password") ? document.getElementById("password").value : '';
-    var conpassword = document.getElementById("conpassword") ? document.getElementById("conpassword").value : '';
-    var eta = document.getElementById("age") ? document.getElementById("age").value : '';
-    var birthdate = document.getElementById("birthdate") ? document.getElementById("birthdate").value.trim() : '';
-    
+    var nome = document.getElementById("name").value;
+    var cognome = document.getElementById("cognome").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var conpassword = document.getElementById("conpassword").value;
+    var eta = document.getElementById("age").value;
+    var paese = document.getElementById("country").value;
+    var birthdate = document.getElementById("birthdate").value;
+
     // Gestione radio button (Genere)
     var genereEl = document.querySelector('input[name="gender"]:checked');
     var genere = genereEl ? genereEl.value : '';
     
-    var paese = document.getElementById("country") ? document.getElementById("country").value : '';
+
     var terms = document.getElementById("terms") ? document.getElementById("terms").checked : false;
 
     // 2. Validazione dei dati (Controllo errori)
