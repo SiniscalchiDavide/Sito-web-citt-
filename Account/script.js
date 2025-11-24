@@ -161,12 +161,12 @@ async function loadCountriesFromFile(jsonPath = 'countries.json') {
 function logout() {
     // Rimuove l'utente loggato
     localStorage.removeItem('currentUser');
-    // Ricarica la pagina per ripristinare i pulsanti originali
-    window.location.reload(); 
+    // vai alla home page
+    window.location.href = '../index/Firenze.html';
 }
 
 function checkLoginStatus() {
-    // Cerca l'elemento nav con ID "user-nav" (presente in Firenze.html)
+    // Cerca l'elemento nav con ID "user-nav" 
     const nav = document.getElementById('user-nav');
     
     // Se non trova l'elemento (es. siamo nella pagina di login), non fa nulla
