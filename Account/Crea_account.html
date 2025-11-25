@@ -43,23 +43,23 @@
 
                 </div>
 
-                <div class="form-group">
-                    <label for="eta">Età:</label>
-                    <input type="number" id="age" max="99" min="18" name="eta" placeholder="Inserisci la tua età"required>
-
-                </div>
 
                 <div class="form-group">
                     <label for="birthdate">Data di nascita:</label>
-                    <input type="text" id="birthdate" name="birthdate"  placeholder="Inserisci la tua data di nascita"required></textarea>
+                    <input type="date" id="birthdate" name="birthdate"  placeholder="Inserisci la tua data di nascita"required></textarea>
 
                 </div>
 
                 <div class="form-group radio-group">
-                    <label>Genere:</label>
-                    <input type="radio" name="gender" value="Maschio" required> Maschio
-                    <input type="radio" name="gender" value="Femmina" required> Femmina
-
+                    <span class="label-title">Genere:</span>
+                    
+                    <label class="radio-option">
+                        <input type="radio" name="gender" value="Maschio" required> Maschio
+                    </label>
+                    
+                    <label class="radio-option">
+                        <input type="radio" name="gender" value="Femmina" required> Femmina
+                    </label>
                 </div>
 
                 <!-- select crea delle opzioni a tendina grazie a option-->

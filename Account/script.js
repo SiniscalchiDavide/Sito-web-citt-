@@ -6,7 +6,6 @@ function conferma() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var conpassword = document.getElementById("conpassword").value;
-    var eta = document.getElementById("age").value;
     var paese = document.getElementById("country").value;
     var birthdate = document.getElementById("birthdate").value;
 
@@ -55,7 +54,6 @@ function conferma() {
         cognome: cognome,
         email: email,
         password: password, 
-        eta: eta,
         birthdate: birthdate,
         genere: genere,
         paese: paese,

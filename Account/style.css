@@ -38,9 +38,9 @@ form {
 }
 /*css per l'input e il select*/
 .form-group input[type="text"],
+.form-group input[type="date"],
 .form-group input[type="email"],
 .form-group input[type="password"],
-.form-group input[type="number"],
 .form-group select,
 .form-group input[type="color"],
 .form-group input[type="file"] {
@@ -55,7 +55,7 @@ form {
 
 .form-group input[type="radio"] {
   margin-right: 5px;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .form-group .radio-group label {
@@ -85,14 +85,7 @@ button[type="button"]:hover {
 }
 
 
-.radio-group {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.radio-group label {
-  margin-right: 10px;
-}
 
 @media (max-width: 600px) {
   .container {
@@ -157,4 +150,32 @@ header {
     header {
         padding: 10px 12px;
     }
+}
+
+/* Contenitore principale: Allinea tutto in orizzontale al centro */
+.radio-group {
+    display: flex;
+    align-items: center; /* Centra verticalmente pallini e testo */
+    flex-wrap: nowrap;   /* Impedisce di andare a capo */
+}
+
+/* Stile per la scritta "Genere:" */
+.radio-group .label-title {
+    font-weight: bold;
+    margin-right: 15px; /* Spazio dopo i due punti */
+}
+
+/* Stile per ogni blocco (pallino + testo) */
+.radio-option {
+    display: flex;       /* Assicura che pallino e testo siano allineati */
+    align-items: center; 
+    margin-right: 20px;  /* SPAZIO che staccava il pallino Femmina da Maschio */
+    font-weight: normal; /* Toglie il grassetto dalle opzioni se vuoi */
+    cursor: pointer;     /* Fa apparire la manina del mouse */
+}
+
+/* Reset specifico per i pallini dentro questo gruppo */
+.radio-option input[type="radio"] {
+    margin: 0 5px 0 0;   /* Toglie margini strani e mette 5px a destra del pallino */
+    width: auto;         /* Evita che il pallino si allarghi come gli altri input */
 }
