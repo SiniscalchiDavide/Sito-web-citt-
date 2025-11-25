@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1,h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+/*css per l'input e il select*/
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group select,
+.form-group input[type="color"],
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.form-group input[type="radio"] {
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.form-group .radio-group label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.form-group input[type="range"] {
+  width: 100%;
+  margin-top: 10px;
+}
+
+button[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+button[type="button"]:hover {
+  background-color: #3e8e41;
+}
+
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.radio-group label {
+  margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+      padding: 10px;
+  }
+
+  form {
+      padding: 10px;
+  }
+
+  button[type="button"] {
+      font-size: 14px;
+  }
+}
+:root {
+    --accent: #9b3d2b;
+    --text: #222;
+}
+
+/* Header semplice e sticky 
+   "position: sticky" e "top: 0" sono le proprietà 
+   che permettono all'header di rimanere fisso in alto mentre scorri */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: linear-gradient(90deg, #fff, #f3ece8);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Assicura che stia sopra gli altri elementi */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Contenitore del Logo e Titolo */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+
+
+
+/* Stile per il messaggio di benvenuto (se presente) */
+.welcome-msg {
+    font-weight: bold;
+    margin-right: 10px;
+    color: var(--text);
+}
+
+/* Adattamento Mobile per l'header */
+@media (max-width: 640px) {
+    header {
+        padding: 10px 12px;
+    }
+}
