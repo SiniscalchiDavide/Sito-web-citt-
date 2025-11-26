@@ -3,6 +3,13 @@
     --text: #222;
 }
 
+/* Reset e Stile di Base */
+body{
+    font-family:system-ui,Segoe UI,Arial;
+    margin:0;              /* Nessun margine sul body */
+    background:#f7f5f2
+}
+
 /* Header semplice e sticky 
    "position: sticky" e "top: 0" sono le proprietà 
    che permettono all'header di rimanere fisso in alto mentre scorri */
@@ -71,4 +78,14 @@ nav {
     header {
         padding: 10px 12px;
     }
+}
+
+main {
+    margin: 24px;          /* Margine solo sul main */
+}
+
+.box {
+    max-width:420px;
+    margin:40px auto;
+    /* ... resto del codice ... */
 }

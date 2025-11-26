@@ -72,3 +72,19 @@ nav {
         padding: 10px 12px;
     }
 }
+
+body{
+    font-family:system-ui,Segoe UI,Arial;
+    margin:0;              /* Nessun margine sul body */
+    background:#f7f5f2
+}
+
+main {
+    margin: 24px;          /* Margine solo sul main */
+}
+
+.box {
+    max-width:420px;
+    margin:40px auto;
+    /* ... resto del codice ... */
+}
