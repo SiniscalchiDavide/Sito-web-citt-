@@ -241,3 +241,57 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCountriesFromFile(); // Carica i paesi nel menu a tendina
     checkLoginStatus();      // Controlla se sei loggato e personalizza il menu
 });
+
+
+
+//controllo login prima di navigare su pagine protette
+
+// Lista dei link che richiedono il login
+// Questi sono i link che vogliamo proteggere
+const protectedLinks = [
+    '../cibi/cibi.html',
+    '../cosa_vedere/cosa_vedere.html',
+    '../eventi/eventi.html',
+    '../gite/gite.html',
+    '../personaggi/presonaggi.html'
+];
+// Quando il documento HTML ha finito di caricare
+document.addEventListener('DOMContentLoaded', () => {
+    // Trova tutti i link (elementi <a>) nella pagina
+    const allLinks = document.querySelectorAll('a');
+    // Per ogni link nella pagina
+    allLinks.forEach(link => {
+        // Leggi l'attributo href (la destinazione del link)
+        const href = link.getAttribute('href');
+        // Controlla se questo link è nella lista dei link protetti
+        if (protectedLinks.includes(href)) {
+            // Aggiungi un evento: quando clicchi il link, chiama la funzione checkLoginBeforeNavigate()
+            link.addEventListener('click', (event) => {
+                checkLoginBeforeNavigate(event, href);
+            });
+        }
+    });
+});
+// ====================================================================
+// FUNZIONE: checkLoginBeforeNavigate(event, href)
+// ====================================================================
+// Questa funzione viene chiamata quando clicchi un link protetto
+// event = l'evento del click
+// href = il link dove stai cercando di andare
+// ====================================================================
+function checkLoginBeforeNavigate(event, href) {
+    // Leggi se c'è un utente attualmente loggato
+    const currentUser = localStorage.getItem('currentUser');
+    // Se NON c'è un utente loggato (currentUser è null/undefined)
+    if (!currentUser) {
+        // Impedisce il comportamento predefinito del link (non va alla pagina)
+        event.preventDefault();
+        // Mostra un popup con un messaggio
+        // \n crea una nuova riga nel messaggio
+        alert(
+            'Devi fare il login per accedere a questa pagina.\n\n' +
+            'Clicca su "Accedi" oppure "Crea account" nel menu in alto.');
+
+    }
+    // Se c'è un utente loggato, il link funziona normalmente (non bloccato)
+}
