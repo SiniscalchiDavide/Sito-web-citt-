@@ -1,5 +1,37 @@
-body{font-family:system-ui,Segoe UI,Arial;margin:24px;background:#f7f5f2}
-.box{max-width:420px;margin:40px auto;padding:18px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-label{display:block;margin:10px 0 6px}
-input{width:100%;padding:8px;border:1px solid #ddd;border-radius:6px}
-button{margin-top:12px;padding:8px 12px;background:#9b3d2b;color:#fff;border:none;border-radius:6px}
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family:system-ui,Segoe UI,Arial;
+    margin:24px;
+    background:#f7f5f2
+}
+.box{
+    max-width:420px;
+    margin:40px auto;
+    padding:18px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 6px 18px #0000000f
+}
+label{
+    display:block;
+    margin:10px 0 6px
+}
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; 
+}
+button{
+    margin-top:12px;
+    padding:8px 12px;
+    background:#9b3d2b;
+    color:#fff;
+    border:none;
+    border-radius:6px}
+p{
+    margin-top:12px
+}
