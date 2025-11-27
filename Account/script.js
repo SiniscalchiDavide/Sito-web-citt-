@@ -1,7 +1,14 @@
-// --- FUNZIONE DI REGISTRAZIONE (conferma) ---
-// Questa funzione raccoglie i dati dal form e li valida prima di salvare l'utente
+// ============================================================================
+// FUNZIONE DI REGISTRAZIONE - conferma()
+// ============================================================================
+// Questa funzione viene chiamata quando l'utente clicca il bottone "Registrati"
+// Raccoglie tutti i dati dal modulo HTML, li valida e poi li salva nel browser
+// Se ci sono errori di validazione, mostra un messaggio all'utente
+// Se la registrazione ha successo, reindirizza alla home page e fa il login automatico
+// ============================================================================
+
 function conferma() {
-    // 1. Recupero dei valori dal form usando gli ID degli elementi HTML
+    // STEP 1: Leggi tutti i valori inseriti nel form usando gli ID degli elementi HTML
     var nome = document.getElementById("name").value;
     var cognome = document.getElementById("cognome").value;
     var email = document.getElementById("email").value;
@@ -10,25 +17,61 @@ function conferma() {
     var paese = document.getElementById("country").value;
     var birthdate = document.getElementById("birthdate").value;
 
-    // Gestione radio button (Genere) - Trova il radio button selezionato
+    // STEP 2: Gestisci il campo radio button per il genere
+    // document.querySelector() cerca un elemento radio con name="gender" che sia checked (selezionato)
     var genereEl = document.querySelector('input[name="gender"]:checked');
-    var genere = genereEl ? genereEl.value : ''; // Se selezionato, prendi il valore, altrimenti stringa vuota
+    var genere = genereEl ? genereEl.value : '';
     
-    // Verifica se l'utente ha accettato i termini e le condizioni
+    // STEP 3: Leggi se l'utente ha spuntato la checkbox "Accetto i termini"
     var terms = document.getElementById("terms") ? document.getElementById("terms").checked : false;
 
-    // 2. Validazione dei dati (Controllo errori)
-    var error = false; // Flag per tracciare se ci sono errori
-    var errorMessage = ""; // Stringa per accumulare i messaggi di errore
+    // ========================================================================
+    // STEP 4: VALIDAZIONE DEI DATI - Verifica che tutti i campi siano corretti
+    // ========================================================================
+    var error = false;
+    var errorMessage = "";
 
     // Controlla che il nome non sia vuoto
-    if (!nome) { errorMessage += "- Il campo Nome è obbligatorio.\n"; error = true; }
+    if (!nome) { 
+        errorMessage += "- Il campo Nome è obbligatorio.\n"; 
+        error = true; 
+    }
+    
     // Controlla che il cognome non sia vuoto
-    if (!cognome) { errorMessage += "- Il campo Cognome è obbligatorio.\n"; error = true; }
+    if (!cognome) { 
+        errorMessage += "- Il campo Cognome è obbligatorio.\n"; 
+        error = true; 
+    }
+    
     // Controlla che l'email non sia vuota
-    if (!email) { errorMessage += "- Il campo Email è obbligatorio.\n"; error = true; }
+    if (!email) { 
+        errorMessage += "- Il campo Email è obbligatorio.\n"; 
+        error = true; 
+    }
+    
     // Controlla che la password non sia vuota
-    if (!password) { errorMessage += "- La Password è obbligatoria.\n"; error = true; }
+    if (!password) { 
+        errorMessage += "- La Password è obbligatoria.\n"; 
+        error = true; 
+    }
+    
+    // Controlla che il genere sia selezionato
+    if (genere=="") { 
+        errorMessage += "- Devi selezionare un Genere.\n"; 
+        error = true; 
+    }
+    
+    // Controlla che il paese sia selezionato
+    if (!paese) { 
+        errorMessage += "- Devi selezionare un Paese.\n"; 
+        error = true; 
+    }
+    
+    // Controlla che la data di nascita non sia vuota
+    if (!birthdate) { 
+        errorMessage += "- La Data di Nascita è obbligatoria.\n"; 
+        error = true; 
+    }
     
     // Controlla che le due password coincidano
     if (password !== conpassword) {
@@ -39,22 +82,18 @@ function conferma() {
     // Controlla che l'utente abbia accettato i termini e le condizioni
     if (!terms) {
         errorMessage += "- Devi accettare i termini e le condizioni.\n";
-        var termsError = document.getElementById("termsError");
-        if (termsError) termsError.style.display = "block"; // Mostra il messaggio di errore
         error = true;
-    } else {
-        // Se i termini sono accettati, nascondi il messaggio di errore
-        var termsError = document.getElementById("termsError");
-        if (termsError) termsError.style.display = "none";
-    }
+    } 
 
-    // Se ci sono errori, mostra un alert e interrompi l'esecuzione
+    // Se abbiamo trovato almeno un errore, ferma tutto e mostra un alert
     if (error) {
         alert("Attenzione, correggi i seguenti errori:\n" + errorMessage);
-        return; // Esce dalla funzione senza salvare
+        return;
     }
 
-    // 3. Creazione dell'oggetto Utente con tutti i dati inseriti
+    // ========================================================================
+    // STEP 5: CREA UN OGGETTO CON I DATI DELL'UTENTE
+    // ========================================================================
     var user = {
         nome: nome,
         cognome: cognome,
@@ -63,106 +102,190 @@ function conferma() {
         birthdate: birthdate,
         genere: genere,
         paese: paese,
-        createdAt: new Date().toISOString() // Aggiunge la data/ora di registrazione
+        createdAt: new Date().toISOString()
     };
 
-    // 4. Salvataggio nel LocalStorage
+    // ========================================================================
+    // STEP 6: SALVA L'UTENTE NEL LOCALSTORAGE
+    // ========================================================================
     if (saveUserToStorage(user)) {
-        // Se il salvataggio è riuscito, imposta l'utente come loggato
         setCurrentUser(email);
         alert("Registrazione avvenuta con successo! Benvenuto " + nome);
-        // Reindirizza alla home page
-        window.location.href = '../index/Firenze.html'; 
+        window.location.href = '../index/Firenze.html';
     } else {
-        // Se il salvataggio fallisce (email già registrata), mostra errore
         alert("Errore: utente già registrato con questa email.");
     }
 }
 
-// --- FUNZIONI DI SUPPORTO (Database Browser) ---
+// ============================================================================
+// FUNZIONI DI SUPPORTO - Gestione del Database nel Browser (LocalStorage)
+// ============================================================================
+// Il LocalStorage è come un piccolo database nel browser dell'utente
+// Salva i dati sul computer dell'utente (non su un server)
+// I dati rimangono anche dopo che il browser viene chiuso
+// ============================================================================
 
-// Salva un nuovo utente nel LocalStorage (memorizzazione nel browser)
+// ============================================================================
+// FUNZIONE: saveUserToStorage(user)
+// ============================================================================
+// Scopo: Salva un nuovo utente nel LocalStorage verificando che non sia già registrato
+// Parametro: user = oggetto con i dati dell'utente (nome, email, password, ecc.)
+// Ritorna: true se il salvataggio è riuscito, false se l'email esiste già
+// ============================================================================
+
 function saveUserToStorage(user) {
-    // Recupera la lista degli utenti dal LocalStorage, o crea un array vuoto se non esiste
-    var users = JSON.parse(localStorage.getItem('users')) || [];
     
-    // Controlla se un utente con la stessa email è già registrato
+    // ========================================================================
+    // STEP 1: LETTURA DEI DATI DAL LOCALSTORAGE
+    // ========================================================================
+    // localStorage.getItem('users') → Legge la stringa JSON degli utenti salvati
+    // JSON.parse() → Converte la stringa JSON in un array di oggetti JavaScript
+    // || [] → Se non esiste nulla, crea un array vuoto
+    // ========================================================================
+    
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+
+    
+    // ========================================================================
+    // STEP 2: CONTROLLO SE L'EMAIL ESISTE GIÀ
+    // ========================================================================
+    // users.some() → Controlla se ALMENO UN elemento soddisfa la condizione
+    // u.email === user.email → Confronta se le email sono uguali
+    // Ritorna: true se l'email esiste, false se è nuova
+    // ========================================================================
+    
     var esiste = users.some(function(u) {
         return u.email === user.email;
     });
 
-    // Se l'email è già registrata, ritorna false (registrazione fallita)
+    // ========================================================================
+    // STEP 3: SE L'EMAIL ESISTE, BLOCCA LA REGISTRAZIONE
+    // ========================================================================
+    // if (esiste) → Se l'email è stata trovata
+    // return false → Esce dalla funzione e segnala errore
+    // ========================================================================
+    
     if (esiste) {
         return false;
     }
 
-    // Aggiunge il nuovo utente alla lista
+    // ========================================================================
+    // STEP 4: AGGIUNGI IL NUOVO UTENTE ALLA LISTA
+    // ========================================================================
+    // users.push(user) → Aggiunge il nuovo utente alla fine dell'array
+    // ========================================================================
+    
     users.push(user);
-    // Salva la lista aggiornata nel LocalStorage come JSON
+
+    // ========================================================================
+    // STEP 5: SALVA I DATI NEL LOCALSTORAGE
+    // ========================================================================
+    // JSON.stringify(users) → Converte l'array in stringa JSON
+    // localStorage.setItem() → Salva la stringa nel LocalStorage
+    // ========================================================================
+    
     localStorage.setItem('users', JSON.stringify(users));
-    return true; // Registrazione riuscita
+
+    // ========================================================================
+    // STEP 6: RITORNA TRUE (SUCCESSO)
+    // ========================================================================
+    // return true → Segnala che il salvataggio è riuscito
+    // ========================================================================
+    
+    return true;
 }
 
-// Imposta l'utente corrente come loggato nel LocalStorage
+// ============================================================================
+// FUNZIONE: setCurrentUser(identifier)
+// ============================================================================
+// Scopo: Segna un utente come "attualmente loggato" nel browser
+// Parametro: identifier = email dell'utente che fa il login
+// Effetto: Salva l'email nel LocalStorage per ricordarsi chi è loggato
+// ============================================================================
+
 function setCurrentUser(identifier) {
     localStorage.setItem('currentUser', identifier);
 }
 
-// Recupera l'email dell'utente attualmente loggato
+// ============================================================================
+// FUNZIONE: getCurrentUser()
+// ============================================================================
+// Scopo: Legge quale utente è attualmente loggato
+// Ritorna: L'email dell'utente loggato, oppure null se nessuno è loggato
+// ============================================================================
+
 function getCurrentUser() {
     return localStorage.getItem('currentUser');
 }
 
-// Recupera la lista di tutti gli utenti registrati dal LocalStorage
+// ============================================================================
+// FUNZIONE: getUsersFromStorage()
+// ============================================================================
+// Scopo: Legge la lista di TUTTI gli utenti registrati dal LocalStorage
+// Ritorna: Un array di oggetti utente, oppure un array vuoto se nessuno è registrato
+// ============================================================================
+
 function getUsersFromStorage() {
     return JSON.parse(localStorage.getItem('users')) || [];
 }
 
-// --- FUNZIONE DI LOGIN ---
-// Autentica un utente verificando email e password
+// ============================================================================
+// FUNZIONE DI LOGIN - login()
+// ============================================================================
+// Questa funzione verifica le credenziali di login dell'utente
+//controlla se l'utente è loggato
+// ============================================================================
+
 function login() {
-    // Recupera i valori inseriti nei campi email e password
+    // Leggi email e password inserite nei campi del form
     var emailInput = document.getElementById("email").value;
     var passwordInput = document.getElementById("password").value;
 
-    // Ottiene la lista di tutti gli utenti registrati
+    // Ottieni la lista di tutti gli utenti registrati dal LocalStorage
     var users = getUsersFromStorage();
 
-    // Cerca un utente con email e password corrispondenti
+    // Cerca tra gli utenti uno che abbia email E password identiche a quelle inserite
     var user = users.find(function(u) {
         return u.email === emailInput && u.password === passwordInput;
     });
 
-    // Se l'utente esiste, effettua il login
+    // Se abbiamo trovato un utente (email e password corrette)
     if (user) {
-        setCurrentUser(user.email); // Salva l'utente come loggato
+        setCurrentUser(user.email);
         alert("Account creato!");
-        window.location.href = '../index/Firenze.html'; // Reindirizza alla home
+        window.location.href = '../index/Firenze.html';
     } else {
-        // Se email o password sono scorretti, mostra errore
         alert("Email o password non corretti.");
     }
 }
 
-// --- GESTIONE PAESI (Caricamento dal JSON) ---
-// Carica la lista dei paesi da un file JSON e popola il menu a tendina
+// ============================================================================
+// FUNZIONE DI CARICAMENTO PAESI - loadCountriesFromFile()
+// ============================================================================
+// Questa funzione carica una lista di paesi da un file JSON esterno
+// Popola un menu a tendina (select) con i nomi dei paesi in italiano
+// Ordina i paesi alfabeticamente
+// Se il file non viene trovato, non fa nulla (nessun errore bloccante)
+// ============================================================================
+
 async function loadCountriesFromFile(jsonPath = 'countries.json') {
     try {
-        // Effettua una richiesta al file JSON
+        // Prova a scaricare il file JSON con i dati dei paesi
         const res = await fetch(jsonPath);
-        // Se il file non viene trovato (404), esce silenziosamente
+        // Se il file non esiste (errore 404), esci senza bloccare nulla
         if (!res.ok) return; 
         
-        // Converte la risposta in oggetto JavaScript
+        // Converti il file JSON in un oggetto JavaScript
         const countries = await res.json();
-        // Cerca il select con ID 'country'
+        // Cerca l'elemento HTML con ID "country" (il menu a tendina)
         const select = document.getElementById('country');
-        if (!select) return; // Se non esiste, esce
+        // Se non esiste, esci (siamo probabilmente su una pagina diversa)
+        if (!select) return;
         
-        // Azzera il contenuto del select e aggiunge l'opzione di default
+        // Svuota il menu e aggiungi un'opzione di default
         select.innerHTML = '<option value="">Seleziona un paese</option>';
         
-        // Filtra i paesi validi (che hanno la proprietà 'it' con il nome italiano)
+        // Filtra i paesi validi (quelli che hanno il nome in italiano)
         const filtered = Array.isArray(countries)
             ? countries.filter(item => item && typeof item === 'object' && Object.prototype.hasOwnProperty.call(item, 'it'))
             : [];
@@ -170,54 +293,66 @@ async function loadCountriesFromFile(jsonPath = 'countries.json') {
         // Ordina i paesi alfabeticamente per nome italiano
         filtered.sort((a, b) => (a.it || '').localeCompare(b.it || '', 'it'));
         
-        // Per ogni paese valido, crea un'opzione e la aggiunge al select
+        // Per ogni paese valido, crea un'opzione nel menu e aggiungila
         filtered.forEach(item => {
-            const name = item.it; // Nome in italiano
-            const value = item.alpha2 || item.alpha3 || name; // Codice paese (ISO)
-            if (!name) return; // Se il nome non esiste, salta
+            const name = item.it;
+            const value = item.alpha2 || item.alpha3 || name;
+            if (!name) return;
             const opt = document.createElement('option');
             opt.value = value;
             opt.textContent = name;
             select.appendChild(opt);
         });
     } catch (err) {
-        // Se c'è un errore nel caricamento, stampa un messaggio non bloccante
+        // Se c'è un errore durante il caricamento, stampa un messaggio nei log
         console.log("Nota: Impossibile caricare countries.json (normale se non sei nella pagina di registrazione)");
     }
 }
 
-// --- NUOVE FUNZIONI: LOGOUT E CONTROLLO HEADER ---
+// ============================================================================
+// FUNZIONE DI LOGOUT - logout()
+// ============================================================================
+// Questa funzione disconnette l'utente attualmente loggato
+// Cancella i dati di login dal browser e reindirizza alla home page
+// ============================================================================
 
-// Funzione per disconnettere l'utente corrente
 function logout() {
-    // Rimuove l'email dell'utente loggato dal LocalStorage
+    // Rimuove l'email dell'utente attualmente loggato dal LocalStorage
     localStorage.removeItem('currentUser');
     // Reindirizza alla home page
     window.location.href = '../index/Firenze.html';
 }
 
-// Controlla se un utente è loggato e aggiorna il menu di navigazione
+// ============================================================================
+// FUNZIONE DI CONTROLLO LOGIN - checkLoginStatus()
+// ============================================================================
+// Questa funzione viene eseguita quando la pagina carica
+// Verifica se un utente è loggato e personalizza il menu di navigazione
+// Se è loggato, mostra: "Ciao, [Nome]" e un pulsante "Esci"
+// Se non è loggato, il menu rimane come lo hai programmato nell'HTML
+// ============================================================================
+
 function checkLoginStatus() {
-    // Cerca l'elemento HTML con ID "user-nav" (menu di navigazione utente)
+    // Cerca l'elemento HTML con ID "user-nav" (menu di navigazione dell'utente)
     const nav = document.getElementById('user-nav');
     
-    // Se non trova l'elemento (es. siamo nella pagina di login), non fa nulla
+    // Se non trovi l'elemento, esci
     if (!nav) return;
 
-    // Recupera l'email dell'utente attualmente loggato
+    // Leggi se c'è un utente loggato (la sua email)
     const currentUserEmail = getCurrentUser();
 
-    // Se c'è un utente loggato, personalizza il menu
+    // Se c'è un utente loggato
     if (currentUserEmail) {
-        // Recupera la lista di tutti gli utenti
+        // Ottieni la lista di tutti gli utenti registrati
         const users = getUsersFromStorage();
-        // Trova l'utente con l'email corrente
+        // Trova l'oggetto utente che corrisponde all'email attualmente loggata
         const user = users.find(u => u.email === currentUserEmail);
         
-        // Determina il nome da mostrare: nome utente, email, o "Utente"
+        // Decidi cosa mostrare come nome
         const displayName = user ? user.nome : (currentUserEmail || "Utente");
 
-        // MODIFICA L'HTML DEL MENU con saluto e pulsante di logout
+        // MODIFICA IL CONTENUTO HTML DEL MENU DI NAVIGAZIONE
         nav.innerHTML = `
             <div style="display:flex; align-items:center; gap:10px;">
                 <span class="welcome-msg" style="font-weight:bold; color:#333;">Ciao, ${displayName}</span>
@@ -227,8 +362,13 @@ function checkLoginStatus() {
     }
 }
 
-// --- INIZIALIZZAZIONE GLOBALE ---
-// Espone le funzioni a livello globale (window) per renderle accessibili dall'HTML
+// ============================================================================
+// INIZIALIZZAZIONE GLOBALE - Rendi le funzioni accessibili dall'HTML
+// ============================================================================
+// Normalmente le funzioni JavaScript sono visibili solo all'interno del file
+// Qui le assegniamo a "window" per farle diventare accessibili anche dall'HTML
+// Così puoi usare onclick="conferma()" direttamente nei bottoni HTML
+// ============================================================================
 
 window.conferma = conferma;
 window.login = login;
@@ -236,13 +376,19 @@ window.logout = logout;
 window.getCurrentUser = getCurrentUser;
 window.getUsersFromStorage = getUsersFromStorage;
 
-// Esegue queste operazioni quando il documento HTML ha terminato di caricare
+// ============================================================================
+// ESECUZIONE AL CARICAMENTO DELLA PAGINA - DOMContentLoaded
+// ============================================================================
+// Questo evento si attiva quando l'HTML ha finito di caricare
+// Eseguiamo queste funzioni di setup prima che l'utente interagisca con la pagina
+// ============================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    loadCountriesFromFile(); // Carica i paesi nel menu a tendina
-    checkLoginStatus();      // Controlla se sei loggato e personalizza il menu
+    // Carica la lista dei paesi nel menu a tendina (se esiste)
+    loadCountriesFromFile();
+    // Controlla se c'è un utente loggato e personalizza il menu di navigazione
+    checkLoginStatus();
 });
-
-
 
 //controllo login prima di navigare su pagine protette
 
