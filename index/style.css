@@ -1,0 +1,100 @@
+:root{
+    --accent:#9b3d2b;
+    --bg:#f7f5f2;
+    --card:#fff;
+    --text:#222;
+}
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.4;
+}
+/* Header semplice e sticky */
+header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 16px;
+    background:linear-gradient(90deg,#fff,#f3ece8);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+/* Aggiunto ID per manipolarlo con JS */
+nav{display:flex;gap:8px;align-items:center}
+.btn{
+    background:var(--accent);
+    color:#fff;
+    padding:8px 12px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    display:inline-block;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.btn.secondary{
+    background:transparent;
+    color:var(--accent);
+    border:1px solid var(--accent);
+}
+/* Stile per il messaggio di benvenuto */
+.welcome-msg {
+    font-weight: bold;
+    margin-right: 10px;
+    color: var(--text);
+}
+/* Hero e layout principale */
+.hero{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    padding:20px;
+    max-width:1100px;
+    margin:18px auto;
+}
+.hero .intro{flex:1}
+.hero img{width:360px;max-width:40%;height:auto;border-radius:10px;display:block}
+/* Grid semplificata */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+    max-width:1100px;
+    margin:12px auto 40px;
+    padding:0 16px;
+}
+.card{
+    background:var(--card);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    display:flex;
+    flex-direction:column;
+}
+.card img{width:100%;height:140px;object-fit:cover}
+.card .content{padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+footer{max-width:1100px;margin:10px auto 40px;padding:12px 16px;color:#666;font-size:14px}
+/* Mobile */
+@media (max-width:640px){
+    .hero{flex-direction:column-reverse;padding:14px}
+    .hero img{width:100%;max-width:100%;height:auto}
+    header{padding:10px 12px}
+}

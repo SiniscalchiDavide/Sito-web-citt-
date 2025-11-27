@@ -1,106 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Firenze</title>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Firenze - Home</title>
     <link rel="stylesheet" href="style.css">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../Icona/favicon.png">
+
+
 </head>
 <body>
-
     <header>
-        <h1>Benvenuti a Firenze</h1>
-        </header>
+        <div class="brand" aria-label="Logo Firenze">
+            <a href="../index/Firenze.html">
+                <img src="../Icona/comune-di-firenze-100x150.png" alt="Logo Firenze">
+            </a>
+            <div>
+                <strong>Firenze</strong><br><small>Città d'arte e sapori</small>
+            </div>
+        </div>
+        <!-- Aggiunto ID "user-nav" per trovarlo con Javascript -->
+        <nav id="user-nav">
+            <a class="btn" href="../Login/Login.html" aria-label="Accedi">Accedi</a>
+            <a class="btn secondary" href="../Account/Crea_account.html" aria-label="Crea account" style="margin-left:8px">Crea account</a>
+        </nav>
+    </header>
 
     <main>
-        <p>Prima di iniziare effettua il Login</p>
-        <div class="container">
-        <h1>Modulo di Registrazione</h1>
-        <form>
-            <div class="form-group">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name"placeholder="Inserisci il tuo nome" required>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="intro">
+                <h1 id="hero-title">Benvenuti a Firenze</h1>
+                <p>Scopri i cibi tipici, i luoghi da vedere, gli eventi, le gite e i personaggi storici che hanno segnato la città.</p>
 
             </div>
+            <img src="immagini/santa_maria_del_fiore.jpg" alt="Vista del Duomo di Firenze">
+        </section>
 
-            <div class="form-group">
-                <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" name="cognome" placeholder="Inserisci il tuo cognome" required>
-
+        <section class="grid" aria-label="Sezioni principali">
+            <div class="card" role="article">
+                <img src="images/cibi.jpg" alt="Piatti tipici fiorentini">
+                <div class="content">
+                    <div>
+                        <h3>Cibi tipici</h3>
+                        <p>Scopri la cucina fiorentina: bistecca alla fiorentina, crostini, ribollita e dolci locali.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../cibi/cibi.html">Vai a Cibi</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required>
-
+            <div class="card" role="article">
+                <img src="images/luoghi.jpg" alt="Ponte Vecchio e Arno">
+                <div class="content">
+                    <div>
+                        <h3>Luoghi da vedere</h3>
+                        <p>Itinerari: Duomo, Uffizi, Ponte Vecchio, piazza della Signoria e altro ancora.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../cosa_vedere/cosa_vedere.html">Vai a Luoghi</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="eta">Età:</label>
-                <input type="number" id="age" max="99" min="18" name="eta" placeholder="Inserisci la tua età"required>
-
+            <div class="card" role="article">
+                <img src="images/eventi.jpg" alt="Evento culturale a Firenze">
+                <div class="content">
+                    <div>
+                        <h3>Eventi</h3>
+                        <p>Mostre, festival e appuntamenti locali aggiornati per tutto l'anno.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../eventi/eventi.html">Vai a Eventi</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="birthdate">Data di nascita:</label>
-                <input type="text" id="birthdate" name="birthdate"  placeholder="Inserisci la tua data di nascita"required></textarea>
-
+            <div class="card" role="article">
+                <img src="images/gite.jpg" alt="Gite nei dintorni di Firenze">
+                <div class="content">
+                    <div>
+                        <h3>Gite</h3>
+                        <p>Escursioni consigliate: colline del Chianti, Pisa, Siena e borghi vicini.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../gite/gite.html">Vai a Gite</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group radio-group">
-                <label>Genere:</label>
-                <input type="radio" name="gender" value="Maschio" required> Maschio
-                <input type="radio" name="gender" value="Femmina" required> Femmina
-
+            <div class="card" role="article">
+                <img src="immagini/LEONARDO_DA_VINCI.jpg" alt="Ritratti di personaggi storici">
+                <div class="content">
+                    <div>
+                        <h3>Personaggi storici</h3>
+                        <p>Scopri figure come Dante, Leonardo, Michelangelo e altri protagonisti fiorentini.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../personaggi/presonaggi.html">Vai a Personaggi</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- select crea delle opzioni a tendina grazie a option-->
-            <div class="form-group">
-                <label for="country">Paese di provenienza:</label>
-                <select id="country" name="country" required>
-                    <option value="">Caricamento paesi...</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Inserisci la tua password" >
-            </div>
-
-            <div class="form-group">
-                <label for="conpassword">Conferma Password:</label>
-                <input type="password" id="conpassword" name="compassword" placeholder="Inserisci di nuovo la tua password" required>
-            </div>
-
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="terms" required> Accetta i termini e le condizioni
-                </label>
-                <div id="termsError" class="errorterms">Devi accettare i termini e le condizioni.</div>
-            </div>
-            <!--accept indica i tipi di file acettabili-->
-            <div class="form-group">
-                <label for="cv">Carica il tuo CV:</label>
-                <input type="file" id="cv" accept=".pdf,.doc,.docx">
-            </div>
-
-            <button type="button" id="submitButton" onclick="conferma()">Invia</button>
-        </form>
-
-
-    </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Gruppo di Lavoro</p>
+        <div>&copy; Firenze - Davide, Alexandra & Vittorio.</div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="script.js"></script>
+    <script src="../Account/script.js"></script>
 </body>
 </html>
