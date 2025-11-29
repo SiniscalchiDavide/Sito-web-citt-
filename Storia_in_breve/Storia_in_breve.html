@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firenze - Storia in Breve</title>
+    
+    <!-- Bootstrap CSS CDN (Mantenuto solo per lo stile dei badge e progress bar) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- FONT Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE STYLES */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Layout e Spaziatura (Sostituzione Tailwind) */
+        .container {
+            width: 100%;
+            max-width: 896px; /* Equivalente a max-w-4xl */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+
+        .section-padding {
+            padding-top: 3rem; /* py-12 */
+            padding-bottom: 3rem; /* py-12 */
+        }
+        
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 4rem; /* md:py-16 */
+                padding-bottom: 4rem; /* md:py-16 */
+            }
+        }
+
+        /* COLORS & TYPOGRAPHY */
+        /* AGGIORNATO: Colore primario a #9b3d2b con !important per sovrascrivere Bootstrap */
+        .text-primary { color: #9b3d2b !important; }
+        
+        h2 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            text-align: center;
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        
+        .nav-title {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 700; /* font-bold */
+        }
+        
+        .text-lg { font-size: 1.125rem; }
+        .text-gray-700 { color: #4b5563; }
+        .text-gray-800 { color: #1f2937; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-500 { color: #6b7280; }
+
+        /* NAVIGAZIONE */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar .container {
+            padding-top: 0.75rem; /* py-3 */
+            padding-bottom: 0.75rem; /* py-3 */
+        }
+
+        /* PROGRESS BAR & BADGES */
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+            font-size: 0.875rem; /* sm:text-sm, text-xs */
+            line-height: 1.25;
+        }
+
+        .progress-container { margin-bottom: 1.5rem; } /* mb-6 */
+
+        /* Definiamo i colori per le barre di progresso e BADGE */
+        /* Nota: Ho mantenuto i colori dei badge e delle progress bar (tranne "origini") perché fanno parte di una sequenza cromatica */
+        .progress-bar-origini, .badge-origini { background-color: #9b3d2b !important; } /* AGGIORNATO */
+        .progress-bar-medioevo, .badge-medioevo { background-color: #7f8c8d !important; }
+        .progress-bar-comune, .badge-comune { background-color: #27ae60 !important; }
+        .progress-bar-rinascimento, .badge-rinascimento { background-color: #f1c40f !important; }
+        .progress-bar-moderna, .badge-moderna { background-color: #3498db !important; }
+        .progress-bar-oggi, .badge-oggi { background-color: #333333 !important; }
+
+        /* CUSTOM ACCORDION STYLES */
+        .accordion-item {
+            border-radius: 0.5rem; 
+            margin-bottom: 0.75rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+        .accordion-header {
+            cursor: pointer;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            transition: all 0.2s;
+            background-color: white;
+            border-radius: 0.5rem;
+        }
+        .accordion-header:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Stato Attivo (AGGIORNATO IL COLORE DELL'HEADER ATTIVO) */
+        .accordion-header.active {
+            color: #9b3d2b !important; /* Nuovo colore primario con !important */
+            background-color: #fcebeb; /* Sfondo tenue basato sul nuovo colore */
+        }
+
+        /* Stili per il contenuto espandibile - Pure CSS */
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1.25rem;
+        }
+        /* Contenuto Attivo: usa max-height alta per l'animazione fluida */
+        .collapse-content.active {
+            max-height: 100vh;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        /* Stili Freccia (Icona) */
+        .chevron {
+            transition: transform 0.3s;
+            margin-left: auto; /* ms-auto */
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* ALERT CURIOSITÀ */
+        .alert-curiosity {
+            background-color: #dbeafe; /* blue-100 */
+            border-left: 4px solid #3b82f6; /* border-l-4 border-blue-500 */
+            color: #1e40af; /* text-blue-800 */
+            padding: 1rem; /* p-4 */
+            border-radius: 0.375rem; /* rounded-md */
+            box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05); /* shadow-inner */
+            margin-bottom: 2rem; /* mb-8 */
+        }
+        .alert-curiosity h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CARD RIEPILOGO */
+        .summary-card {
+            background-color: white;
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); /* shadow-xl */
+            border-top: 4px solid #9b3d2b; /* AGGIORNATO: Nuovo colore primario */
+        }
+        .summary-card h5 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 700;
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        .summary-card p {
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGAZIONE -->
+<nav class="navbar">
+    <div class="container">
+        <!-- Uso esplicito di text-primary -->
+        <span class="nav-title text-primary">Firenze Turismo - Storia</span>
+    </div>
+</nav>
+
+<!-- =========================
+     SEZIONE "STORIA IN BREVE"
+     ========================== -->
+<section id="storia" class="section-padding">
+    <div class="container">
+        <!-- Uso esplicito di text-primary -->
+        <h2 class="text-primary">Storia di Firenze in breve</h2>
+        <p class="text-center text-lg text-gray-700" style="margin-bottom: 2rem;">
+            Firenze ha una storia molto lunga, che parte dall’epoca romana e arriva fino ai giorni nostri.
+            Nel Medioevo diventa un ricco comune, nel Rinascimento una delle città più importanti d’Europa,
+            e oggi è un grande centro turistico e culturale.
+        </p>
+
+        <!-- =========================
+            PROGRESS BAR CRONOLOGICA
+            ========================== -->
+        <div class="progress-container">
+            <div class="progress rounded-lg overflow-hidden" style="height: 1.5rem;">
+                <div class="progress-bar progress-bar-origini" role="progressbar" style="width: 16.6%;" aria-label="Origini romane">
+                    <span class="small font-semibold text-white">Origini</span>
+                </div>
+                <div class="progress-bar progress-bar-medioevo" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Medioevo</span>
+                </div>
+                <div class="progress-bar progress-bar-comune" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Comune</span>
+                </div>
+                <div class="progress-bar progress-bar-rinascimento" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-dark">Rinascimento</span>
+                </div>
+                <div class="progress-bar progress-bar-moderna" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Età moderna</span>
+                </div>
+                <div class="progress-bar progress-bar-oggi" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Oggi</span>
+                </div>
+            </div>
+
+            <!-- Etichette sotto la progress bar per chiarire i periodi -->
+            <div class="flex-between text-gray-500">
+                <span>Origini romane</span>
+                <span>Alto Medioevo</span>
+                <span>Comune medievale</span>
+                <span>Rinascimento &amp; Medici</span>
+                <span>Età moderna</span>
+                <span>Novecento e oggi</span>
+            </div>
+        </div>
+
+        <!-- =========================
+            ELEMENTO COLLAPSE CUSTOM (CSS PURE + JS NATIVO)
+            ========================== -->
+        <div id="storiaCollapse" style="margin-bottom: 2rem;">
+
+            <!-- 1) Origini romane -->
+            <div class="accordion-item" id="itemOrigini">
+                <div class="accordion-header" onclick="toggleCollapse('collapseOrigini', 'itemOrigini')">
+                    <!-- Badge con text-white esplicito e classe specifica -->
+                    <span class="badge me-2 badge-origini text-white" style="margin-right: 0.5rem;">1</span>
+                    Origini romane (59 a.C.)
+                    <span class="chevron text-gray-500">
+                        <!-- Icona Freccia SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <!-- Contenuto con classi CSS per l'effetto collapse -->
+                <div id="collapseOrigini" class="collapse-content">
+                    <p>
+                        Firenze nasce come colonia romana intorno al 59 a.C. con il nome di <em>Florentia</em>,
+                        fondata lungo la via Cassia e nella valle dell’Arno. La città ha una pianta regolare,
+                        tipica degli accampamenti romani, e viene pensata come centro militare e commerciale.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2) Alto Medioevo -->
+            <div class="accordion-item" id="itemAltoMedioevo">
+                <div class="accordion-header" onclick="toggleCollapse('collapseAltoMedioevo', 'itemAltoMedioevo')">
+                    <span class="badge me-2 badge-medioevo text-white" style="margin-right: 0.5rem;">2</span>
+                    Alto Medioevo
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseAltoMedioevo" class="collapse-content">
+                    <p>
+                        Dopo la caduta dell’Impero romano d’Occidente, Firenze attraversa secoli difficili:
+                        subisce invasioni e cambi di dominio (ostrogoti, bizantini, longobardi).
+                        La popolazione diminuisce e la città perde importanza, ma rimane un punto di passaggio
+                        nella valle dell’Arno.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3) Comune medievale -->
+            <div class="accordion-item" id="itemComune">
+                <div class="accordion-header" onclick="toggleCollapse('collapseComune', 'itemComune')">
+                    <span class="badge me-2 badge-comune text-white" style="margin-right: 0.5rem;">3</span>
+                    Comune medievale (XI–XIII secolo)
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseComune" class="collapse-content">
+                    <p>
+                        Tra XI e XIII secolo Firenze diventa un comune libero, con proprie istituzioni
+                        e un forte sviluppo economico. Si afferma come centro di produzione tessile
+                        (soprattutto lana) e come polo bancario: i mercanti e i banchieri fiorentini
+                        sono attivi in tutta Europa.
+                    </p>
+                    <p>
+                        Allo stesso tempo nascono conflitti interni tra fazioni (Guelfi e Ghibellini),
+                        che segneranno profondamente la vita politica della città.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4) Rinascimento e Medici -->
+            <div class="accordion-item" id="itemRinascimento">
+                <div class="accordion-header" onclick="toggleCollapse('collapseRinascimento', 'itemRinascimento')">
+                    <span class="badge me-2 badge-rinascimento text-dark" style="margin-right: 0.5rem;">4</span>
+                    Rinascimento e Medici (XV–XVI secolo)
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseRinascimento" class="collapse-content">
+                    <p>
+                        Nel Quattrocento e Cinquecento Firenze è considerata la culla del Rinascimento.
+                        Qui lavorano artisti come Brunelleschi, Donatello, Botticelli, Leonardo da Vinci,
+                        Michelangelo e molti altri. La città si riempie di palazzi, chiese e opere d’arte
+                        che oggi attirano milioni di visitatori.
+                    </p>
+                    <p>
+                        La famiglia Medici governa a lungo la città e, grazie al mecenatismo,
+                        sostiene artisti, filosofi e scienziati. Sotto il loro controllo
+                        Firenze diventa un laboratorio culturale di importanza europea.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5) Età moderna e capitale d’Italia -->
+            <div class="accordion-item" id="itemModerna">
+                <div class="accordion-header" onclick="toggleCollapse('collapseModerna', 'itemModerna')">
+                    <span class="badge me-2 badge-moderna text-white" style="margin-right: 0.5rem;">5</span>
+                    Età moderna e capitale d’Italia (XVIII–XIX secolo)
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseModerna" class="collapse-content">
+                    <p>
+                        Dopo l’estinzione dei Medici, Firenze passa sotto il controllo degli Asburgo-Lorena,
+                        che avviano riforme amministrative e modernizzazioni. Nell’Ottocento la città entra
+                        a far parte del nuovo Regno d’Italia.
+                    </p>
+                    <p>
+                        Tra il 1865 e il 1871 Firenze viene scelta come capitale del Regno,
+                        prima del definitivo spostamento della capitale a Roma. In questi anni
+                        la città subisce trasformazioni urbanistiche importanti.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6) Novecento e oggi -->
+            <div class="accordion-item" id="itemNovecento">
+                <div class="accordion-header" onclick="toggleCollapse('collapseNovecento', 'itemNovecento')">
+                    <span class="badge me-2 badge-oggi text-white" style="margin-right: 0.5rem;">6</span>
+                    Novecento e oggi
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseNovecento" class="collapse-content">
+                    <p>
+                        Durante la Seconda guerra mondiale Firenze subisce bombardamenti
+                        e vengono distrutti quasi tutti i ponti sull’Arno, tranne il Ponte Vecchio.
+                        Nel corso del Novecento la città si ricostruisce e si espande oltre il centro storico.
+                    </p>
+                    <p>
+                        Nel 1982 il centro storico di Firenze viene riconosciuto come
+                        Patrimonio mondiale dall’UNESCO. Oggi la città è una delle mete turistiche
+                        più visitate al mondo, famosa per musei, monumenti e per il contributo
+                        fondamentale alla lingua e alla cultura italiana.
+                    </p>
+                </div>
+            </div>
+        </div> <!-- fine collapse custom -->
+
+        <!-- =========================
+            ALERT DI CURIOSITÀ
+            ========================== -->
+        <div class="alert-curiosity" role="alert">
+            <h4>Curiosità</h4>
+            <p>Dal 1982 il centro storico di Firenze è riconosciuto come
+            <em>Patrimonio mondiale dell’UNESCO</em>, grazie alla concentrazione unica di arte,
+            architettura e testimonianze del Rinascimento.</p>
+        </div>
+
+        <!-- =========================
+            CARD DI RIEPILOGO
+            ========================== -->
+        <div class="summary-card">
+            <h5 class="text-gray-800">Perché Firenze è così importante nella storia?</h5>
+            <p class="text-gray-600">
+                In poco spazio, Firenze è riuscita a concentrare secoli di storia politica,
+                economica e culturale. Da colonia romana a ricco comune medievale, da capitale
+                del Rinascimento a capitale del Regno d’Italia per alcuni anni, la città ha avuto
+                un ruolo centrale nello sviluppo dell’arte, della finanza e della lingua italiana.
+            </p>
+            <p class="text-gray-600 italic">
+                Oggi il suo centro storico è un vero museo a cielo aperto: capire la storia di Firenze
+                aiuta anche a capire perché, ancora oggi, sia una tappa fondamentale per chi studia
+                o visita l’Italia.
+            </p>
+        </div>
+
+    </div> <!-- fine .container -->
+</section>
+<!-- FINE SEZIONE "STORIA IN BREVE" -->
+
+<!-- JAVASCRIPT PERSONALIZZATO PER L'EFFETTO COLLAPSE (Nativo, non di Bootstrap) -->
+<script>
+    // Variabile per tenere traccia dell'elemento aperto (per l'effetto Accordion)
+    let openItemId = null;
+    let openContentId = null;
+
+    /**
+     * Gestisce l'apertura e la chiusura di un pannello collapse.
+     * @param {string} contentId - L'ID del div del contenuto da aprire/chiudere (es. 'collapseOrigini').
+     * @param {string} itemId - L'ID dell'elemento wrapper del pannello (es. 'itemOrigini').
+     */
+    function toggleCollapse(contentId, itemId) {
+        const content = document.getElementById(contentId);
+        const item = document.getElementById(itemId);
+        // Seleziona il tag SVG della freccia, che è il primo elemento con classe 'chevron' all'interno di 'item'
+        const chevron = item.querySelector('.chevron');
+
+        // 1. Chiudi il pannello precedentemente aperto (se esiste ed è diverso da quello attuale)
+        if (openContentId && openContentId !== contentId) {
+            const prevContent = document.getElementById(openContentId);
+            const prevItem = document.getElementById(openItemId);
+            const prevChevron = prevItem.querySelector('.chevron');
+
+            // Rimuovi le classi di stato attivo
+            prevContent.classList.remove('active');
+            prevItem.querySelector('.accordion-header').classList.remove('active');
+            prevChevron.classList.remove('rotated');
+            
+            // Pulisci l'elemento aperto
+            openContentId = null;
+            openItemId = null;
+        }
+
+        // 2. Apri o chiudi il pannello corrente
+        const header = item.querySelector('.accordion-header');
+        
+        if (content.classList.contains('active')) {
+            // Se è attivo, chiudi
+            content.classList.remove('active');
+            header.classList.remove('active');
+            chevron.classList.remove('rotated');
+            openContentId = null;
+            openItemId = null;
+        } else {
+            // Se è chiuso, apri
+            content.classList.add('active');
+            header.classList.add('active');
+            chevron.classList.add('rotated');
+            // Imposta l'elemento corrente come aperto
+            openContentId = contentId;
+            openItemId = itemId;
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firenze - Cibo Tipico</title>
+    <!-- Font Inter (definito nel config Tailwind) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configurazione personalizzata di Tailwind per colori specifici
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Colore principale del testo (Marrone Toscano/Rosso Scuro)
+                        'maroon-tuscany': '#960018',
+                        // Colore di sfondo per l'elemento attivo nella lista (Beige Dorato)
+                        'gold-active': '#fef3c7',
+                        // Colore per i testi secondari e gli accenti
+                        'gold-text': '#78350f',
+                        // Colore per i badge neutri
+                        'stone-gray': '#57534e',
+                        // Colore per i badge success
+                        'leaf-green': '#16a34a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Stile aggiuntivo per assicurare l'altezza corretta e l'oggetto fit */
+        .object-fit-cover {
+            object-fit: cover;
+        }
+        /* Stile per nascondere le tab non attive (gestito in JS) */
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<!-- NAVIGAZIONE -->
+<nav class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <!-- Brand con colore personalizzato -->
+        <span class="text-xl font-bold text-maroon-tuscany">Firenze Turismo - Cibo Tipico</span>
+    </div>
+</nav>
+
+<!-- ==================================
+      SEZIONE: CIBO TIPICO
+      ================================== -->
+<section id="cibo-tipico" class="py-12 md:py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Titolo e introduzione della sezione con colore personalizzato -->
+        <h2 class="mb-4 text-center text-4xl sm:text-5xl font-extrabold text-maroon-tuscany">Cibo tipico fiorentino</h2>
+        <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-10">
+            La cucina fiorentina unisce piatti di carne alla brace, zuppe “povere” di pane e verdure
+            e dolci tradizionali da gustare con il Vin Santo.
+        </p>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            
+            <!-- COLONNA SINISTRA: LISTA DEI PIATTI (Simulazione List Group) -->
+            <div class="w-full md:w-1/3">
+                <div class="flex flex-col shadow-xl rounded-xl overflow-hidden bg-white" id="list-piatti" role="tablist">
+                    
+                    <!-- Bistecca alla fiorentina (ATTIVA DI DEFAULT) -->
+                    <a class="list-item-link block px-6 py-4 cursor-pointer text-gray-700 hover:bg-gold-active/50 transition duration-150 ease-in-out border-b border-gray-100 active bg-gold-active font-semibold text-maroon-tuscany"
+                        data-target="list-bistecca"
+                        role="tab">
+                        Bistecca alla fiorentina
+                    </a>
+
+                    <!-- Ribollita -->
+                    <a class="list-item-link block px-6 py-4 cursor-pointer text-gray-700 hover:bg-gold-active/50 transition duration-150 ease-in-out border-b border-gray-100"
+                        data-target="list-ribollita"
+                        role="tab">
+                        Ribollita
+                    </a>
+
+                    <!-- Pappa al pomodoro -->
+                    <a class="list-item-link block px-6 py-4 cursor-pointer text-gray-700 hover:bg-gold-active/50 transition duration-150 ease-in-out border-b border-gray-100"
+                        data-target="list-pappa"
+                        role="tab">
+                        Pappa al pomodoro
+                    </a>
+
+                    <!-- Lampredotto -->
+                    <a class="list-item-link block px-6 py-4 cursor-pointer text-gray-700 hover:bg-gold-active/50 transition duration-150 ease-in-out border-b border-gray-100"
+                        data-target="list-lampredotto"
+                        role="tab">
+                        Lampredotto
+                    </a>
+
+                    <!-- Cantucci e Vin Santo -->
+                    <a class="list-item-link block px-6 py-4 cursor-pointer text-gray-700 hover:bg-gold-active/50 transition duration-150 ease-in-out"
+                        data-target="list-cantucci"
+                        role="tab">
+                        Cantucci e Vin Santo
+                    </a>
+                </div>
+            </div>
+
+            <!-- COLONNA DESTRA: CONTENUTO DEI PIATTI (Tab Content) -->
+            <div class="w-full md:w-2/3">
+                <div class="tab-content" id="nav-tabContent">
+
+                    <!-- TAB 1 – Bistecca alla fiorentina -->
+                    <div class="tab-pane active" id="list-bistecca" role="tabpanel">
+                        <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                            <div class="md:flex">
+                                <!-- Immagine del piatto (Path Aggiornato) -->
+                                <div class="md:w-5/12">
+                                    <img src="Bistecca_fiorentina.jpg" 
+                                        class="h-64 md:h-full w-full object-fit-cover"
+                                        alt="Bistecca alla fiorentina servita alla brace"
+                                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/960018/ffffff?text=Bistecca';">
+                                </div>
+                                <!-- Testo descrittivo -->
+                                <div class="md:w-7/12 p-6">
+                                    <h5 class="text-2xl font-extrabold text-maroon-tuscany mb-2">Bistecca alla fiorentina</h5>
+                                    <!-- Badge per classificare il piatto -->
+                                    <p class="mb-4 flex flex-wrap gap-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-maroon-tuscany text-white">Secondo di carne</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-stone-gray text-white">Alla brace</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-leaf-green text-white">Da condividere</span>
+                                    </p>
+                                    <p class="text-gray-700 mb-4">
+                                        La bistecca alla fiorentina è il piatto simbolo della cucina di Firenze:
+                                        un taglio spesso di carne bovina, tradizionalmente di razza Chianina,
+                                        cotto alla brace e servito rigorosamente al sangue. Di solito viene portata in tavola
+                                        su grosse tagliere di legno e condivisa tra più persone.
+                                    </p>
+                                    <p class="text-sm text-gray-500 italic">
+                                        Consiglio: da accompagnare con un calice di vino rosso toscano
+                                        e patate arrosto o fagioli all’uccelletto.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2 – Ribollita -->
+                    <div class="tab-pane" id="list-ribollita" role="tabpanel">
+                        <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                            <div class="md:flex">
+                                <div class="md:w-5/12">
+                                    <!-- Immagine del piatto (Path Aggiornato) -->
+                                    <img src="ribollita.jpg" 
+                                        class="h-64 md:h-full w-full object-fit-cover"
+                                        alt="Piatto di ribollita toscana con pane e cavolo nero"
+                                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/27ae60/ffffff?text=Ribollita';">
+                                </div>
+                                <div class="md:w-7/12 p-6">
+                                    <h5 class="text-2xl font-extrabold text-maroon-tuscany mb-2">Ribollita</h5>
+                                    <p class="mb-4 flex flex-wrap gap-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-maroon-tuscany text-white">Zuppa</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-stone-gray text-white">Cucina povera</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-leaf-green text-white">Vegetariana</span>
+                                    </p>
+                                    <p class="text-gray-700 mb-4">
+                                        La ribollita è una zuppa densa a base di pane raffermo, cavolo nero e altre
+                                        verdure di stagione. Nasce dalla tradizione contadina di “riciclare” il pane
+                                        del giorno prima, facendolo bollire di nuovo insieme al minestrone di verdure.
+                                    </p>
+                                    <p class="text-sm text-gray-500 italic">
+                                        Il nome “ribollita” deriva proprio dal fatto che viene riscaldata più volte,
+                                        diventando sempre più saporita e cremosa.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3 – Pappa al pomodoro -->
+                    <div class="tab-pane" id="list-pappa" role="tabpanel">
+                        <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                            <div class="md:flex">
+                                <div class="md:w-5/12">
+                                    <!-- Immagine del piatto (Path Aggiornato) -->
+                                    <img src="Pappa_pomodoro.jpg" 
+                                        class="h-64 md:h-full w-full object-fit-cover"
+                                        alt="Piatto di pappa al pomodoro con pane e basilico"
+                                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/e74c3c/ffffff?text=Pappa';">
+                                </div>
+                                <div class="md:w-7/12 p-6">
+                                    <h5 class="text-2xl font-extrabold text-maroon-tuscany mb-2">Pappa al pomodoro</h5>
+                                    <p class="mb-4 flex flex-wrap gap-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-maroon-tuscany text-white">Zuppa</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-stone-gray text-white">Pane e pomodoro</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-leaf-green text-white">Semplice</span>
+                                    </p>
+                                    <p class="text-gray-700 mb-4">
+                                        La pappa al pomodoro è una preparazione a base di pane raffermo, pomodori,
+                                        aglio, basilico e olio extravergine d’oliva. La consistenza è cremosa,
+                                        quasi da “purè”, e il gusto è intenso ma semplice.
+                                    </p>
+                                    <p class="text-sm text-gray-500 italic">
+                                        È ottima sia calda che a temperatura ambiente, soprattutto d’estate.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4 – Lampredotto -->
+                    <div class="tab-pane" id="list-lampredotto" role="tabpanel">
+                        <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                            <div class="md:flex">
+                                <div class="md:w-5/12">
+                                    <!-- Immagine del piatto (Path Aggiornato) -->
+                                    <img src="lampredotto.jpg" 
+                                        class="h-64 md:h-full w-full object-fit-cover"
+                                        alt="Panino con lampredotto tipico street food fiorentino"
+                                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/9b59b6/ffffff?text=Lampredotto';">
+                                </div>
+                                <div class="md:w-7/12 p-6">
+                                    <h5 class="text-2xl font-extrabold text-maroon-tuscany mb-2">Lampredotto</h5>
+                                    <p class="mb-4 flex flex-wrap gap-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-maroon-tuscany text-white">Street food</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-stone-gray text-white">Frattaglie</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-leaf-green text-white">Tradizionale</span>
+                                    </p>
+                                    <p class="text-gray-700 mb-4">
+                                        Il lampredotto è uno dei piatti di street food più tipici di Firenze:
+                                        si tratta di una parte dello stomaco del bovino, cotta a lungo in un
+                                        brodo aromatizzato e servita nel panino, spesso con salsa verde e salsa piccante.
+                                    </p>
+                                    <p class="text-sm text-gray-500 italic">
+                                        Si trova nei chioschi e nei “lampredottai” sparsi per la città,
+                                        soprattutto nelle zone centrali e nei mercati.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 5 – Cantucci e Vin Santo -->
+                    <div class="tab-pane" id="list-cantucci" role="tabpanel">
+                        <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                            <div class="md:flex">
+                                <div class="md:w-5/12">
+                                    <!-- Immagine del piatto (Path Aggiornato) -->
+                                    <img src="Cantucci_e_Vin Santo.jpg" 
+                                        class="h-64 md:h-full w-full object-fit-cover"
+                                        alt="Cantucci alle mandorle serviti con bicchiere di Vin Santo"
+                                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/f39c12/ffffff?text=Cantucci';">
+                                </div>
+                                <div class="md:w-7/12 p-6">
+                                    <h5 class="text-2xl font-extrabold text-maroon-tuscany mb-2">Cantucci e Vin Santo</h5>
+                                    <p class="mb-4 flex flex-wrap gap-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-maroon-tuscany text-white">Dolce</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-stone-gray text-white">Biscotti alle mandorle</span>
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-leaf-green text-white">Tradizione toscana</span>
+                                    </p>
+                                    <p class="text-gray-700 mb-4">
+                                        I cantucci sono biscotti secchi alle mandorle, tagliati in diagonale
+                                        e cotti due volte per diventare croccanti. Tradizionalmente si accompagnano
+                                        con un bicchiere di Vin Santo, un vino dolce in cui i biscotti vengono intinti.
+                                    </p>
+                                    <p class="text-sm text-gray-500 italic">
+                                        È uno dei finali più classici di un pasto fiorentino,
+                                        soprattutto nelle trattorie tradizionali.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- fine .tab-content -->
+            </div> <!-- fine col destra -->
+        </div> <!-- fine .flex -->
+    </div> <!-- fine .max-w-7xl -->
+</section>
+<!-- FINE SEZIONE "CIBO TIPICO" -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Funzione per gestire il cambio di tab
+        function activateTab(targetId) {
+            const listItems = document.querySelectorAll('.list-item-link');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            // 1. Rimuovi lo stato attivo da tutti gli elementi della lista e nascondi tutte le tab
+            listItems.forEach(item => {
+                item.classList.remove('active', 'bg-gold-active', 'font-semibold', 'text-maroon-tuscany');
+                item.classList.add('text-gray-700');
+            });
+
+            tabPanes.forEach(pane => {
+                pane.classList.remove('active');
+            });
+
+            // 2. Aggiungi lo stato attivo all'elemento cliccato
+            const activeLink = document.querySelector(`.list-item-link[data-target="${targetId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active', 'bg-gold-active', 'font-semibold', 'text-maroon-tuscany');
+                activeLink.classList.remove('text-gray-700');
+            }
+
+            // 3. Mostra la tab corrispondente
+            const activePane = document.getElementById(targetId);
+            if (activePane) {
+                activePane.classList.add('active');
+            }
+        }
+
+        // Aggiungi listener a tutti gli elementi della lista
+        document.querySelectorAll('.list-item-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                const targetId = event.currentTarget.getAttribute('data-target');
+                activateTab(targetId);
+            });
+        });
+
+        // Attiva la tab di default all'avvio (Bistecca)
+        activateTab('list-bistecca');
+    });
+</script>
+
+</body>
+</html>
