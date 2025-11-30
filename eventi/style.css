@@ -89,3 +89,34 @@ nav {
     margin: 40px auto;
     /* ... resto del codice ... */
 }
+
+
+
+.accordion-button:not(.collapsed) {
+  background-color: #9b3d2b !important;
+  color: white !important;
+}
+.accordion-button:not(.collapsed)::after {
+  filter: invert(1) brightness(200%);
+}
+.accordion-button {
+  color: #9b3d2b !important;
+}
+.accordion-button:hover {
+  background-color: #9b3d2b55 !important;
+}
+
+
+.nav-tabs .nav-link { 
+    color: #9b3d2b !important; 
+}
+.nav-tabs .nav-link.active { 
+    color: #9b3d2b !important; 
+}
+
+a.btn:first-of-type:hover,
+a.btn:first-of-type:focus {
+  opacity: 1 !important;
+  background-color: var(--accent) !important;
+  color: #fff !important;
+}

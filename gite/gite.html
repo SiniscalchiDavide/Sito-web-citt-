@@ -1,38 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Firenze - Gite</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="../Icona/favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gite</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/png" href="../Icona/favicon.png">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-    <header>
-        <div class="brand" aria-label="Logo Firenze">
-            <a href="../index/Firenze.html">
-                <img src="../Icona/comune-di-firenze-100x150.png" alt="Logo Firenze">
-            </a>
-            <div>
-                <strong>Firenze</strong><br><small>Città d'arte e sapori</small>
-            </div>
+<body class="bg-light">
+  <header>
+    <div class="brand" aria-label="Logo Firenze">
+        <a href="../index/Firenze.html">
+            <img src="../Icona/comune-di-firenze-100x150.png" alt="Logo Firenze">
+        </a>
+        <div>
+            <strong>Firenze</strong><br><small>Città d'arte e sapori</small>
         </div>
-        <!-- Aggiunto ID "user-nav" per trovarlo con Javascript -->
-        <nav id="user-nav">
-            <a class="btn" href="../Login/Login.html" aria-label="Accedi">Accedi</a>
-            <a class="btn secondary" href="../Account/Crea_account.html" aria-label="Crea account" style="margin-left:8px">Crea account</a>
-        </nav>
-    </header>
-
-    <main>
-
-    </main>
-
+    </div>
+    <!-- Aggiunto ID "user-nav" per trovarlo con Javascript -->
+    <nav id="user-nav">
+        <a class="btn" href="../Login/Login.html" aria-label="Accedi">Accedi</a>
+        <a class="btn secondary" href="../Account/Crea_account.html" aria-label="Crea account" style="margin-left:8px">Crea account</a>
+    </nav>
+  </header>
+  <div class="container py-4">
+    <h1 class="mb-4 text-center">Gite</h1>
+    <ul class="nav nav-tabs" id="itinerariTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="centro-tab" data-bs-toggle="tab" data-bs-target="#centro" type="button" role="tab">Centro Storico</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="collina-tab" data-bs-toggle="tab" data-bs-target="#collina" type="button" role="tab">Zone collinari</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="musei-tab" data-bs-toggle="tab" data-bs-target="#musei" type="button" role="tab">Musei</button>
+      </li>
+    </ul>
+    <div class="tab-content mt-3" id="itinerariTabsContent">
+      <div class="tab-pane fade show active" id="centro" role="tabpanel">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="Immagini/passeggiata_duomo.avif" class="card-img-top" alt="Foto itinerario" style="object-fit: cover; height: 180px;">
+              <div class="card-body">
+                <h5 class="card-title">Passeggiata tra Duomo e Piazza della Signoria</h5>
+                <p class="card-text">Un itinerario semplice nel cuore di Firenze, tra monumenti storici e vie caratteristiche.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="Immagini/lungarno.jpeg" class="card-img-top" alt="Foto itinerario" style="object-fit: cover; height: 180px;">
+              <div class="card-body">
+                <h5 class="card-title">Percorso Lungarno</h5>
+                <p class="card-text">Un tragitto panoramico lungo il fiume Arno, perfetto per scattare foto suggestive.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="collina" role="tabpanel">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <b>Salita a Piazzale Michelangelo</b><br />
+            Percorso panoramico con vista unica sulla città.
+          </li>
+          <li class="list-group-item">
+            <b>Giro a San Miniato al Monte</b><br />
+            Una passeggiata tra natura e storia.
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="musei" role="tabpanel">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="Immagini/galleria_uffizi.jpg" class="card-img-top" alt="Foto museo" style="object-fit: cover; height: 180px;">
+              <div class="card-body">
+                <h5 class="card-title">Galleria degli Uffizi</h5>
+                <p class="card-text">Uno dei musei più famosi al mondo, ricco di opere rinascimentali.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="Immagini/galleria_accademia.jpg" class="card-img-top" alt="Foto museo" style="object-fit: cover; height: 180px;">
+              <div class="card-body">
+                <h5 class="card-title">Galleria dell'Accademia</h5>
+                <p class="card-text">Celebre per ospitare il David di Michelangelo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <footer>
         <div>&copy; Firenze - Davide, Alexandra & Vittorio.</div>
     </footer>
 
     <script src="../Account/script.js"></script>
-
 </body>
 </html>
