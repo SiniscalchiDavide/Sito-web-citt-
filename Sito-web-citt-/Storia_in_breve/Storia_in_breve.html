@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firenze - Storia di Firenze</title>
+    
+    <!-- Bootstrap CSS CDN (Mantenuto solo per lo stile dei badge e progress bar) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- FONT Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../Icona/favicon.png">
+
+</head>
+<body>
+    <header>
+        <div class="brand" aria-label="Logo Firenze">
+            <a href="../index/Firenze.html">
+                <img src="../Icona/comune-di-firenze-100x150.png" alt="Logo Firenze">
+            </a>
+            <div>
+                <strong>Firenze</strong><br><small>Storia</small>
+            </div>
+        </div>
+        <!-- Aggiunto ID "user-nav" per trovarlo con Javascript -->
+        <nav id="user-nav">
+            <a class="btn" href="../Login/Login.html" aria-label="Accedi">Accedi</a>
+            <a class="btn secondary" href="../Account/Crea_account.html" aria-label="Crea account" style="margin-left:8px">Crea account</a>
+        </nav>
+    </header>
+
+
+<!-- =========================
+     SEZIONE "STORIA IN BREVE"
+     ========================== -->
+<section id="storia" class="section-padding">
+    <div class="container">
+        <!-- Uso esplicito di text-primary -->
+        <h2 class="text-primary">Storia di Firenze in breve</h2>
+        <p class="text-center text-lg text-gray-700" style="margin-bottom: 2rem;">
+            Firenze ha una storia molto lunga, che parte dall’epoca romana e arriva fino ai giorni nostri.
+            Nel Medioevo diventa un ricco comune, nel Rinascimento una delle città più importanti d’Europa,
+            e oggi è un grande centro turistico e culturale.
+        </p>
+
+        <!-- =========================
+            PROGRESS BAR CRONOLOGICA
+            ========================== -->
+        <div class="progress-container">
+            <div class="progress rounded-lg overflow-hidden" style="height: 1.5rem;">
+                <div class="progress-bar progress-bar-origini" role="progressbar" style="width: 16.6%;" aria-label="Origini romane">
+                    <span class="small font-semibold text-white">Origini</span>
+                </div>
+                <div class="progress-bar progress-bar-medioevo" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Medioevo</span>
+                </div>
+                <div class="progress-bar progress-bar-comune" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Comune</span>
+                </div>
+                <div class="progress-bar progress-bar-rinascimento" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-dark">Rinascimento</span>
+                </div>
+                <div class="progress-bar progress-bar-moderna" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Età moderna</span>
+                </div>
+                <div class="progress-bar progress-bar-oggi" role="progressbar" style="width: 16.6%;">
+                    <span class="small font-semibold text-white">Oggi</span>
+                </div>
+            </div>
+
+            <!-- Etichette sotto la progress bar per chiarire i periodi -->
+            <div class="flex-between text-gray-500">
+                <span>Origini romane</span>
+                <span>Alto Medioevo</span>
+                <span>Comune medievale</span>
+                <span>Rinascimento &amp; Medici</span>
+                <span>Età moderna</span>
+                <span>Novecento e oggi</span>
+            </div>
+        </div>
+
+        <!-- =========================
+            ELEMENTO COLLAPSE CUSTOM (CSS PURE + JS NATIVO)
+            ========================== -->
+        <div id="storiaCollapse" style="margin-bottom: 2rem;">
+
+            <!-- 1) Origini romane -->
+            <div class="accordion-item" id="itemOrigini">
+                <div class="accordion-header" onclick="toggleCollapse('collapseOrigini', 'itemOrigini')">
+                    <!-- Badge con text-white esplicito e classe specifica -->
+                    <span class="badge me-2 badge-origini text-white" style="margin-right: 0.5rem;">1</span>
+                    Origini romane (59 a.C.)
+                    <span class="chevron text-gray-500">
+                        <!-- Icona Freccia SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <!-- Contenuto con classi CSS per l'effetto collapse -->
+                <div id="collapseOrigini" class="collapse-content">
+                    <p>
+                        Firenze nasce come colonia romana intorno al 59 a.C. con il nome di <em>Florentia</em>,
+                        fondata lungo la via Cassia e nella valle dell’Arno. La città ha una pianta regolare,
+                        tipica degli accampamenti romani, e viene pensata come centro militare e commerciale.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2) Alto Medioevo -->
+            <div class="accordion-item" id="itemAltoMedioevo">
+                <div class="accordion-header" onclick="toggleCollapse('collapseAltoMedioevo', 'itemAltoMedioevo')">
+                    <span class="badge me-2 badge-medioevo text-white" style="margin-right: 0.5rem;">2</span>
+                    Alto Medioevo
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseAltoMedioevo" class="collapse-content">
+                    <p>
+                        Dopo la caduta dell’Impero romano d’Occidente, Firenze attraversa secoli difficili:
+                        subisce invasioni e cambi di dominio (ostrogoti, bizantini, longobardi).
+                        La popolazione diminuisce e la città perde importanza, ma rimane un punto di passaggio
+                        nella valle dell’Arno.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3) Comune medievale -->
+            <div class="accordion-item" id="itemComune">
+                <div class="accordion-header" onclick="toggleCollapse('collapseComune', 'itemComune')">
+                    <span class="badge me-2 badge-comune text-white" style="margin-right: 0.5rem;">3</span>
+                    Comune medievale (XI–XIII secolo)
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseComune" class="collapse-content">
+                    <p>
+                        Tra XI e XIII secolo Firenze diventa un comune libero, con proprie istituzioni
+                        e un forte sviluppo economico. Si afferma come centro di produzione tessile
+                        (soprattutto lana) e come polo bancario: i mercanti e i banchieri fiorentini
+                        sono attivi in tutta Europa.
+                    </p>
+                    <p>
+                        Allo stesso tempo nascono conflitti interni tra fazioni (Guelfi e Ghibellini),
+                        che segneranno profondamente la vita politica della città.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4) Rinascimento e Medici -->
+            <div class="accordion-item" id="itemRinascimento">
+                <div class="accordion-header" onclick="toggleCollapse('collapseRinascimento', 'itemRinascimento')">
+                    <span class="badge me-2 badge-rinascimento text-dark" style="margin-right: 0.5rem;">4</span>
+                    Rinascimento e Medici (XV–XVI secolo)
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseRinascimento" class="collapse-content">
+                    <p>
+                        Nel Quattrocento e Cinquecento Firenze è considerata la culla del Rinascimento.
+                        Qui lavorano artisti come Brunelleschi, Donatello, Botticelli, Leonardo da Vinci,
+                        Michelangelo e molti altri. La città si riempie di palazzi, chiese e opere d’arte
+                        che oggi attirano milioni di visitatori.
+                    </p>
+                    <p>
+                        La famiglia Medici governa a lungo la città e, grazie al mecenatismo,
+                        sostiene artisti, filosofi e scienziati. Sotto il loro controllo
+                        Firenze diventa un laboratorio culturale di importanza europea.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5) Età moderna e capitale d’Italia -->
+            <div class="accordion-item" id="itemModerna">
+                <div class="accordion-header" onclick="toggleCollapse('collapseModerna', 'itemModerna')">
+                    <span class="badge me-2 badge-moderna text-white" style="margin-right: 0.5rem;">5</span>
+                    Età moderna e capitale d’Italia (XVIII–XIX secolo)
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseModerna" class="collapse-content">
+                    <p>
+                        Dopo l’estinzione dei Medici, Firenze passa sotto il controllo degli Asburgo-Lorena,
+                        che avviano riforme amministrative e modernizzazioni. Nell’Ottocento la città entra
+                        a far parte del nuovo Regno d’Italia.
+                    </p>
+                    <p>
+                        Tra il 1865 e il 1871 Firenze viene scelta come capitale del Regno,
+                        prima del definitivo spostamento della capitale a Roma. In questi anni
+                        la città subisce trasformazioni urbanistiche importanti.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6) Novecento e oggi -->
+            <div class="accordion-item" id="itemNovecento">
+                <div class="accordion-header" onclick="toggleCollapse('collapseNovecento', 'itemNovecento')">
+                    <span class="badge me-2 badge-oggi text-white" style="margin-right: 0.5rem;">6</span>
+                    Novecento e oggi
+                    <span class="chevron text-gray-500">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </div>
+                <div id="collapseNovecento" class="collapse-content">
+                    <p>
+                        Durante la Seconda guerra mondiale Firenze subisce bombardamenti
+                        e vengono distrutti quasi tutti i ponti sull’Arno, tranne il Ponte Vecchio.
+                        Nel corso del Novecento la città si ricostruisce e si espande oltre il centro storico.
+                    </p>
+                    <p>
+                        Nel 1982 il centro storico di Firenze viene riconosciuto come
+                        Patrimonio mondiale dall’UNESCO. Oggi la città è una delle mete turistiche
+                        più visitate al mondo, famosa per musei, monumenti e per il contributo
+                        fondamentale alla lingua e alla cultura italiana.
+                    </p>
+                </div>
+            </div>
+        </div> <!-- fine collapse custom -->
+
+        <!-- =========================
+            ALERT DI CURIOSITÀ
+            ========================== -->
+        <div class="alert-curiosity" role="alert">
+            <h4>Curiosità</h4>
+            <p>Dal 1982 il centro storico di Firenze è riconosciuto come
+            <em>Patrimonio mondiale dell’UNESCO</em>, grazie alla concentrazione unica di arte,
+            architettura e testimonianze del Rinascimento.</p>
+        </div>
+
+        <!-- =========================
+            CARD DI RIEPILOGO
+            ========================== -->
+        <div class="summary-card">
+            <h5 class="text-gray-800">Perché Firenze è così importante nella storia?</h5>
+            <p class="text-gray-600">
+                In poco spazio, Firenze è riuscita a concentrare secoli di storia politica,
+                economica e culturale. Da colonia romana a ricco comune medievale, da capitale
+                del Rinascimento a capitale del Regno d’Italia per alcuni anni, la città ha avuto
+                un ruolo centrale nello sviluppo dell’arte, della finanza e della lingua italiana.
+            </p>
+            <p class="text-gray-600 italic">
+                Oggi il suo centro storico è un vero museo a cielo aperto: capire la storia di Firenze
+                aiuta anche a capire perché, ancora oggi, sia una tappa fondamentale per chi studia
+                o visita l’Italia.
+            </p>
+        </div>
+
+    </div> <!-- fine .container -->
+</section>
+<!-- FINE SEZIONE "STORIA IN BREVE" -->
+
+
+
+    <footer>
+        <div>&copy; Firenze - Davide, Alexandra & Vittorio.</div>
+    </footer>
+    <script src="script.js"></script>
+    <!--controllo login-->
+    <script src="../Account/script.js"></script>
+
+</body>
+</html>

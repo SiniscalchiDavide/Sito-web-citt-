@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Firenze - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../Icona/favicon.png">
+
+
+</head>
+<body>
+    <header>
+        <div class="brand" aria-label="Logo Firenze">
+            <a href="../index/Firenze.html">
+                <img src="../Icona/comune-di-firenze-100x150.png" alt="Logo Firenze">
+            </a>
+            <div>
+                <strong>Firenze</strong><br><small>Città d'arte e sapori</small>
+            </div>
+        </div>
+        <!-- Aggiunto ID "user-nav" per trovarlo con Javascript -->
+        <nav id="user-nav">
+            <a class="btn" href="../Login/Login.html" aria-label="Accedi">Accedi</a>
+            <a class="btn secondary" href="../Account/Crea_account.html" aria-label="Crea account" style="margin-left:8px">Crea account</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="intro">
+                <h1 id="hero-title">Benvenuti a Firenze</h1>
+                <p>Scopri i cibi tipici, i luoghi da vedere, gli eventi, le gite e i personaggi storici che hanno segnato la città.</p>
+
+            </div>
+            <img src="immagini/santa_maria_del_fiore.jpg" alt="Vista del Duomo di Firenze">
+        </section>
+
+        <section class="grid" aria-label="Sezioni principali">
+            <div class="card" role="article">
+                <img src="immagini/Lampredotto.avif" alt="Piatti tipici fiorentini">
+                <div class="content">
+                    <div>
+                        <h3>Cibi tipici</h3>
+                        <p>Scopri la cucina fiorentina: bistecca alla fiorentina, Lampredotto e altro ancora.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../cibi/cibi.html">Vai a Cibi</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" role="article">
+                <img src="immagini/ponte-vecchio-from-uffizi.jpg" alt="Ponte Vecchio e Arno">
+                <div class="content">
+                    <div>
+                        <h3>Luoghi da vedere</h3>
+                        <p>Itinerari: Duomo, Uffizi, Ponte Vecchio, piazza della Signoria e altro ancora.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../cosa_vedere/cosa_vedere.html">Vai a Luoghi</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card" role="article">
+                <img src="immagini/F45_Galleria_Uffizi_112330_foglia.jpg" alt="Gite nei dintorni di Firenze">
+                <div class="content">
+                    <div>
+                        <h3>Gite</h3>
+                        <p>Escursioni consigliate: Piazza della Signoria, Galleria dell'Accademia e altri.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../gite/gite.html">Vai a Gite</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" role="article">
+                <img src="immagini/LEONARDO_DA_VINCI.jpg" alt="Ritratti di personaggi storici">
+                <div class="content">
+                    <div>
+                        <h3>Personaggi storici</h3>
+                        <p>Scopri figure come Dante, Leonardo, Michelangelo e altri protagonisti fiorentini.</p>
+
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../personaggi/presonaggi.html">Vai a Personaggi</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" role="article">
+                <img src="immagini/Firenze-nel-medioevo.webp" alt="Storia di Firenze">
+                <div class="content">
+                    <div>
+                        <h3>Storia in breve</h3>
+                        <p>Dalle origini romane al Rinascimento: scopri come Firenze è diventata la culla dell'arte.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn" href="../Storia_in_breve/Storia_in_breve.html">Vai a Storia</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>&copy; Firenze - Davide, Alexandra & Vittorio.</div>
+    </footer>
+
+    <script src="../Account/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+:root {
+    --accent: #9b3d2b;
+    --text: #222;
+}
+
+/* Header semplice e sticky 
+   "position: sticky" e "top: 0" sono le proprietà 
+   che permettono all'header di rimanere fisso in alto mentre scorri */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: linear-gradient(90deg, #fff, #f3ece8);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Assicura che stia sopra gli altri elementi */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Contenitore del Logo e Titolo */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Navigazione utente */
+nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Stile dei pulsanti presenti nell'header */
+.btn {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+/* Stile per il messaggio di benvenuto (se presente) */
+.welcome-msg {
+    font-weight: bold;
+    margin-right: 10px;
+    color: var(--text);
+}
+
+/* Adattamento Mobile per l'header */
+@media (max-width: 640px) {
+    header {
+        padding: 10px 12px;
+    }
+}
+
+body{
+    font-family:system-ui,Segoe UI,Arial;
+    margin:0;              /* Nessun margine sul body */
+    background:#f7f5f2
+}
+
+main {
+    margin: 24px;          /* Margine solo sul main */
+}
+
+.box {
+    max-width:420px;
+    margin:40px auto;
+    /* ... resto del codice ... */
+}
+
+
+
+/* BASE STYLES */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout e Spaziatura (Sostituzione Tailwind) */
+.container {
+    width: 100%;
+    max-width: 896px; /* Equivalente a max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+.section-padding {
+    padding-top: 3rem; /* py-12 */
+    padding-bottom: 3rem; /* py-12 */
+}
+
+@media (min-width: 768px) {
+    .section-padding {
+        padding-top: 4rem; /* md:py-16 */
+        padding-bottom: 4rem; /* md:py-16 */
+    }
+}
+/* COLORS & TYPOGRAPHY */
+/* AGGIORNATO: Colore primario a #9b3d2b con !important per sovrascrivere Bootstrap */
+.text-primary { color: #9b3d2b !important; }
+
+h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    text-align: center;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.nav-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+}
+
+.text-lg { font-size: 1.125rem; }
+.text-gray-700 { color: #4b5563; }
+.text-gray-800 { color: #1f2937; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-500 { color: #6b7280; }
+/* NAVIGAZIONE */
+.navbar {
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.navbar .container {
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+}
+/* PROGRESS BAR & BADGES */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    font-size: 0.875rem; /* sm:text-sm, text-xs */
+    line-height: 1.25;
+}
+.progress-container { margin-bottom: 1.5rem; } /* mb-6 */
+/* Definiamo i colori per le barre di progresso e BADGE */
+/* Nota: Ho mantenuto i colori dei badge e delle progress bar (tranne "origini") perché fanno parte di una sequenza cromatica */
+.progress-bar-origini, .badge-origini { background-color: #9b3d2b !important; } /* AGGIORNATO */
+.progress-bar-medioevo, .badge-medioevo { background-color: #7f8c8d !important; }
+.progress-bar-comune, .badge-comune { background-color: #27ae60 !important; }
+.progress-bar-rinascimento, .badge-rinascimento { background-color: #f1c40f !important; }
+.progress-bar-moderna, .badge-moderna { background-color: #3498db !important; }
+.progress-bar-oggi, .badge-oggi { background-color: #333333 !important; }
+/* CUSTOM ACCORDION STYLES */
+.accordion-item {
+    border-radius: 0.5rem; 
+    margin-bottom: 0.75rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+.accordion-header {
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    transition: all 0.2s;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+.accordion-header:hover {
+    background-color: #f3f4f6;
+}
+/* Stato Attivo (AGGIORNATO IL COLORE DELL'HEADER ATTIVO) */
+.accordion-header.active {
+    color: #9b3d2b !important; /* Nuovo colore primario con !important */
+    background-color: #fcebeb; /* Sfondo tenue basato sul nuovo colore */
+}
+/* Stili per il contenuto espandibile - Pure CSS */
+.collapse-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    padding: 0 1.25rem;
+}
+/* Contenuto Attivo: usa max-height alta per l'animazione fluida */
+.collapse-content.active {
+    max-height: 100vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Stili Freccia (Icona) */
+.chevron {
+    transition: transform 0.3s;
+    margin-left: auto; /* ms-auto */
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.chevron.rotated {
+    transform: rotate(180deg);
+}
+/* ALERT CURIOSITÀ */
+.alert-curiosity {
+    background-color: #dbeafe; /* blue-100 */
+    border-left: 4px solid #3b82f6; /* border-l-4 border-blue-500 */
+    color: #1e40af; /* text-blue-800 */
+    padding: 1rem; /* p-4 */
+    border-radius: 0.375rem; /* rounded-md */
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05); /* shadow-inner */
+    margin-bottom: 2rem; /* mb-8 */
+}
+.alert-curiosity h4 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+/* CARD RIEPILOGO */
+.summary-card {
+    background-color: white;
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); /* shadow-xl */
+    border-top: 4px solid #9b3d2b; /* AGGIORNATO: Nuovo colore primario */
+}
+.summary-card h5 {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    margin-bottom: 0.75rem; /* mb-3 */
+}
+.summary-card p {
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+.summary-card p:last-child {
+    margin-bottom: 0;
+}
+.nav-tabs .nav-link { 
+    color: #9b3d2b !important; 
+}
+.nav-tabs .nav-link.active { 
+    color: #9b3d2b !important; 
+}
+
+a.btn:first-of-type:hover,
+a.btn:first-of-type:focus {
+  opacity: 1 !important;
+  background-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+    max-width: 1100px;
+    margin: 10px auto 0;
+    padding: 12px 16px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    background: #F7F7F7;
+    z-index: 999;
+}

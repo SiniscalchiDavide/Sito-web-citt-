@@ -1,0 +1,375 @@
+/* --- VARIABILI GLOBALI --- */
+/* ============================================================================
+VARIABILI GLOBALI - :root
+===========================================================================
+Queste variabili CSS vengono usate in tutto il file
+Puoi cambiarle da un unico posto e il colore si aggiorna dappertutto
+Sintassi: var(--nome-variabile)
+=========================================================================== */
+:root {
+    --accent: #9b3d2b;       /* Colore principale (rosso scuro) */
+    --bg: #f7f5f2;           /* Colore di sfondo della pagina (beige chiaro) */
+    --card-bg: #fff;         /* Colore di sfondo delle card (bianco) */
+    --text: #222;            /* Colore del testo (grigio scuro) */
+}
+
+/* ============================================================================
+RESET DI BASE - * (Selettore universale)
+============================================================================
+Questo codice si applica a TUTTI gli elementi HTML della pagina
+box-sizing: border-box fa in modo che il padding sia incluso nella larghezza totale
+Questo evita problemi di layout quando aggiungi padding
+============================================================================ */
+* {
+    box-sizing: border-box;
+}
+
+/* ============================================================================
+STILI DEL BODY - Configurazione globale della pagina
+============================================================================
+Questi stili si applicano al corpo principale della pagina
+margin: 0 rimuove i margini predefiniti del browser
+font-family definisce il tipo di carattere (usa il font di sistema per velocità)
+line-height controlla lo spazio tra le righe di testo
+============================================================================ */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.4;
+}
+
+/* ============================================================================
+HEADER - La barra in alto con logo e menu
+============================================================================
+display: flex rende gli elementi allineati orizzontalmente
+justify-content: space-between mette il massimo spazio tra logo e menu
+position: sticky mantiene l'header visibile mentre scorra la pagina
+z-index: 1000 assicura che l'header rimanga sopra agli altri elementi
+============================================================================ */
+header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 16px;
+    background:linear-gradient(90deg,#fff,#f3ece8);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid rgba(0,0,0,0.04);
+}
+
+/* ============================================================================
+BRAND - Logo e testo di Firenze
+============================================================================
+display: flex allinea il logo e il testo della brand orizzontalmente
+gap: 10px crea spazio tra il logo e il testo
+align-items: center centra verticalmente gli elementi
+============================================================================ */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============================================================================
+BRAND IMG - Logo dell'header
+============================================================================
+width: 48px e height: 48px creano un quadrato di 48 pixel
+border-radius: 8px arrotonda gli angoli dell'immagine
+object-fit: contain mantiene le proporzioni dell'immagine senza tagliarla
+============================================================================ */
+.brand img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* ============================================================================
+NAV - Menu di navigazione (Accedi, Crea account, ecc.)
+============================================================================
+display: flex allinea i bottoni orizzontalmente
+gap: 8px crea spazio tra i bottoni
+align-items: center centra verticalmente i bottoni
+============================================================================ */
+nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* ============================================================================
+BOTTONI - Stili per i pulsanti (Accedi, Crea account)
+============================================================================
+cursor: pointer cambia il cursore in una "manina" quando passi sopra
+display: inline-block permette al bottone di avere larghezza e altezza
+transition: aggiunge un effetto di animazione al bottone
+background: var(--accent) usa il colore principale (rosso)
+color: #fff testo bianco
+padding: 8px 12px spazio interno del bottone
+border-radius: 8px angoli arrotondati
+text-decoration: none rimuove la sottolineatura dai link
+font-weight: 600 testo più grassetto
+border: none nessun bordo
+font-size: 1rem dimensione del testo
+============================================================================ */
+.btn {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* ============================================================================
+MESSAGGIO DI BENVENUTO - "Ciao, DDd"
+============================================================================
+Questo appare quando un utente è loggato
+font-weight: bold testo grassetto
+margin-right: 10px spazio a destra (prima del bottone "Esci")
+color: var(--text) usa il colore del testo principale
+============================================================================ */
+.welcome-msg {
+    font-weight: bold;
+    margin-right: 10px; /* Questo è il margine che mancava! */
+    color: var(--text);
+}
+
+/* ============================================================================
+BOTTONE SECONDARIO - Per i bottoni "Esci" o "Crea account"
+============================================================================
+background: transparent rende il bottone trasparente (solo bordo e testo)
+color: var(--accent) colora il testo con il colore principale
+border: 1px solid var(--accent) aggiunge un bordo con il colore principale
+============================================================================ */
+.btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+/* ============================================================================
+HERO SECTION - La sezione principale con immagine e testo
+============================================================================
+display: flex allinea l'immagine e il testo fianco a fianco
+gap: 20px crea spazio tra immagine e testo
+align-items: center centra verticalmente immagine e testo
+padding: 20px spazio interno
+max-width: 1100px limita la larghezza massima
+margin: 18px auto centra la sezione
+============================================================================ */
+.hero {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 18px auto;
+}
+
+/* ============================================================================
+TESTO NELLA HERO SECTION
+============================================================================
+flex: 1 fa in modo che il testo occupi tutto lo spazio disponibile
+============================================================================ */
+.hero .intro {
+    flex: 1;
+}
+
+/* ============================================================================
+IMMAGINE NELLA HERO SECTION
+============================================================================
+width: 360px larghezza fissa dell'immagine
+max-width: 40% non può superare il 40% della larghezza del container
+height: auto altezza automatica (mantiene proporzioni)
+border-radius: 10px arrotonda gli angoli
+display: block rimuove spazi indesiderati sotto l'immagine
+============================================================================ */
+.hero img {
+    width: 360px;
+    max-width: 40%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+/* ============================================================================
+GRIGLIA - Layout per le card dei personaggi
+============================================================================
+display: grid crea un layout a griglia automatico
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+  - repeat(auto-fit, ...) crea colonne automaticamente
+  - minmax(250px, 1fr) ogni colonna ha minimo 250px, massimo 1 frazione dello spazio
+gap: 16px crea spazio tra le card
+max-width: 1100px limita la larghezza massima della griglia
+margin: 12px auto 40px margini (sopra, lati, sotto)
+padding: 0 16px spazio interno
+============================================================================ */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    max-width: 1100px;
+    margin: 12px auto 40px;
+    padding: 0 16px;
+}
+
+/* ============================================================================
+CARD - Rettangolo con immagine, titolo e descrizione
+============================================================================
+display: flex e flex-direction: column impilano immagine sopra e testo sotto
+overflow: hidden taglia tutto ciò che esce dai bordi arrotondati
+box-shadow: 0 4px 10px rgba(0,0,0,0.05) ombra sottile
+transition: transform 0.2s ease aggiunge un effetto di animazione quando passi il mouse
+background: var(--card-bg) sfondo bianco
+border-radius: 10px angoli arrotondati
+============================================================================ */
+.card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column; /* Impila immagine sopra e testo sotto */
+    transition: transform 0.2s ease;
+}
+
+/* ============================================================================
+EFFETTO AL PASSAGGIO DEL MOUSE SULLA CARD
+============================================================================
+transform: translateY(-5px) sposta la card verso l'alto di 5 pixel
+Questo crea un effetto di "sollevamento" quando passi il mouse
+============================================================================ */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ============================================================================
+IMMAGINE DENTRO LA CARD
+============================================================================
+width: 100% riempie tutta la larghezza della card
+height: 250px forza un'altezza fissa (crea rettangoli uguali)
+object-fit: cover taglia l'immagine mantenendo le proporzioni
+object-position: top mostra la parte superiore dell'immagine (di solito il viso)
+display: block rimuove spazi indesiderati sotto l'immagine
+============================================================================ */
+.card img {
+    width: 100%;
+    height: 250px;           
+    object-fit: cover;       
+    object-position: top;    
+    display: block;          /* Rimuove spazi indesiderati sotto l'immagine */
+}
+
+/* ============================================================================
+CONTENT - Sezione di testo dentro la card (titolo, descrizione, date)
+============================================================================
+padding: 16px crea spazio interno tra il testo e i bordi della card
+display: flex usa flexbox per organizzare gli elementi
+flex-direction: column impila gli elementi verticalmente
+justify-content: space-between distribuisce il contenuto nello spazio
+flex: 1 occupa tutto lo spazio disponibile
+============================================================================ */
+.card .content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1; /* Occupa tutto lo spazio rimanente */
+}
+
+/* ============================================================================
+TITOLO DENTRO LA CARD
+============================================================================
+margin-top: 0 rimuove il margine superiore predefinito del titolo
+color: var(--accent) colora il titolo in rosso (colore principale)
+============================================================================ */
+.card h3 {
+    margin-top: 0;
+    color: var(--accent);
+}
+
+/* ============================================================================
+FOOTER - Piè di pagina con copyright
+
+============================================================================ */
+footer {
+    position: sticky;
+    bottom: 0;
+    max-width: 1100px;
+    margin: 10px auto 0;
+    padding: 12px 16px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    background: #f7f5f2;
+    z-index: 999;
+}
+
+/* ============================================================================
+MEDIA QUERY - Stili per schermi piccoli (mobile)
+============================================================================
+max-width: 640px significa che questi stili si applicano solo a schermi
+più stretti di 640 pixel (smartphone e tablet piccoli)
+============================================================================ */
+@media (max-width: 640px) {
+    /* ====================================================================
+    GRIGLIA SU MOBILE - 2 colonne anziché 3+
+    ====================================================================
+    repeat(2, 1fr) crea esattamente 2 colonne uguali
+    Questo mantiene le card rettangolari senza allungarle
+    ==================================================================== */
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ====================================================================
+    HERO SECTION SU MOBILE - Stack verticale
+    ====================================================================
+    flex-direction: column-reverse mette l'immagine sotto il testo
+    text-align: center centra il testo
+    padding: 14px spazio interno più piccolo
+    ==================================================================== */
+    .hero {
+        flex-direction: column-reverse;
+        padding: 14px;
+        text-align: center;
+    }
+    
+    /* ====================================================================
+    IMMAGINE NELLA HERO SU MOBILE
+    ====================================================================
+    width: 100% riempie tutta la larghezza disponibile
+    max-width: 100% non superare mai il 100%
+    ==================================================================== */
+    .hero img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* ====================================================================
+    HEADER SU MOBILE - Spazio interno più piccolo
+    ====================================================================
+    padding: 10px 12px spazio interno ridotto
+    ==================================================================== */
+    header {
+        padding: 10px 12px;
+    }
+
+    /* ====================================================================
+    BRAND SU MOBILE - Nascondi il testo, mostra solo il logo
+    ====================================================================
+    display: none rende l'elemento invisibile
+    ==================================================================== */
+    .brand span {
+        display: none;
+    }
+}

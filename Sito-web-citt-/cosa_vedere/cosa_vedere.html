@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firenze - Luoghi da vedere</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- FONT Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../Icona/favicon.png">
+
+</head>
+<body>
+    <header>
+        <div class="brand" aria-label="Logo Firenze">
+            <a href="../index/Firenze.html">
+                <img src="../Icona/comune-di-firenze-100x150.png" alt="Logo Firenze">
+            </a>
+            <div>
+                <strong>Firenze</strong><br><small>Luoghi da vedere</small>
+            </div>
+        </div>
+        <!-- Aggiunto ID "user-nav" per trovarlo con Javascript -->
+        <nav id="user-nav">
+            <a class="btnaccedi" href="../Login/Login.html" aria-label="Accedi">Accedi</a>
+            <a class="btnaccedi secondaryaccedi" href="../Account/Crea_account.html" aria-label="Crea account" style="margin-left:8px">Crea account</a>
+        </nav>
+    </header>
+<!-- SEZIONE COSE DA VEDERE -->
+<section id="cosa-vedere" class="py-5">
+    <div class="container">
+        <!-- Titolo principale della sezione (usa text-primary) -->
+        <h2 class="text-center mb-5 display-4 fw-bold text-primary">Cosa Vedere a Firenze</h2>
+
+        
+        <!-- CARD 1 – Duomo -->
+        <div class="card mb-5 shadow-lg border-0 overflow-hidden">
+            <div class="row g-0">
+                <!-- COLONNA 1: CAROUSEL (Immagini) -->
+                <div class="col-md-6 carousel-col-height">
+                    <!-- Carousel (deve essere h-100 per riempire la colonna genitore) -->
+                    <div id="carouselDuomo" class="carousel slide carousel-fade h-100" data-bs-ride="carousel">
+                        
+                        <div class="carousel-inner h-100 rounded-start-3 rounded-end-0">
+                            <!-- Immagine 1: Duomo Esterno (da file caricato) -->
+                            <div class="carousel-item active h-100">
+                                <img src="Immagini/Duomo_Firenze1.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Esterno della Cattedrale di Santa Maria del Fiore">
+                            </div>
+                            <!-- Immagine 2: Cupola di Brunelleschi (Placeholder migliorato) -->
+                            <div class="carousel-item h-100">
+                                <img src="Immagini/Duomo_Firenze2.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Vista ravvicinata della Cupola del Brunelleschi"
+                                    onerror="this.onerror=null; this.src='https://placehold.co/600x400/9b3d2b/ffffff?text=Cupola+Brunelleschi'">
+                            </div>
+                            <!-- Immagine 3: Interno Duomo (Placeholder migliorato) -->
+                            <div class="carousel-item h-100">
+                                <img src="Immagini/Duomo_Firenze3.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Interno della Cattedrale">
+                            </div>
+                        </div>
+                        
+                        <!-- Controlli -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDuomo" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Precedente</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselDuomo" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Successivo</span>
+                        </button>
+                    </div>
+                </div> <!-- FINE COLONNA 1 (Carousel) -->
+                
+                <!-- COLONNA 2: TESTO -->
+                <div class="col-md-6">
+                    <div class="card-body p-4">
+                        <!-- Usa text-primary -->
+                        <h3 class="card-title fw-bold text-primary">Cattedrale di Santa Maria del Fiore (Duomo)</h3>
+                        <p class="card-text lead">Il simbolo indiscusso di Firenze, famoso per la sua maestosa Cupola del Brunelleschi.</p>
+                        
+                        <!-- Bottone per i dettagli extra (usa btn-outline-primary) -->
+                        <div class="d-grid">
+                            <button class="btn btn-outline-primary mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDuomo" aria-expanded="false" aria-controls="collapseDuomo">
+                                Scopri di più
+                            </button>
+                        </div>
+                        
+                        <!-- COLLAPSE per i dettagli extra -->
+                        <div class="collapse mt-3" id="collapseDuomo">
+                            <div class="card card-body bg-light border-0">
+                                <p>La Cattedrale di Santa Maria del Fiore è la principale chiesa di Firenze. La sua costruzione fu iniziata nel 1296 e completata nel 1436 con la realizzazione della cupola, capolavoro di ingegneria e architettura di Filippo Brunelleschi.</p>
+                                <ul>
+                                    <li><strong>Orari:</strong> Variabili, controllare il sito ufficiale.</li>
+                                    <li><strong>Costo:</strong> Ingresso alla Cattedrale gratuito, biglietto combinato per Cupola/Campanile.</li>
+                                    <li><strong>Indirizzo:</strong> Piazza del Duomo, 50122 Firenze FI</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> <!-- FINE card-body -->
+                </div> <!-- FINE COLONNA 2 (Testo) -->
+            </div> <!-- FINE ROW g-0 -->
+        </div> <!-- FINE CARD 1 -->
+
+        
+        <!-- CARD 2 – Ponte Vecchio (Layout invertito con flex-md-row-reverse) -->
+        <div class="card mb-5 shadow-lg border-0 overflow-hidden">
+            <div class="row g-0 flex-md-row-reverse"> 
+                <!-- COLONNA 1 INVERTITA: CAROUSEL (Immagini) -->
+                <div class="col-md-6 carousel-col-height">
+                    <div id="carouselPonteVecchio" class="carousel slide carousel-fade h-100" data-bs-ride="carousel">
+                        
+                        <div class="carousel-inner h-100 rounded-end-3 rounded-start-0">
+                            <!-- Immagine 1: Ponte Vecchio (Placeholder migliorato) -->
+                            <div class="carousel-item active h-100">
+                                <img src="Immagini/Ponte_Vecchio1.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Vista di Ponte Vecchio sul fiume Arno">
+                            </div>
+                            <!-- Immagine 2: Botteghe Orafe (Placeholder migliorato) -->
+                            <div class="carousel-item h-100">
+                                <img src="Immagini/Ponte_Vecchio2.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Dettaglio delle botteghe orafe su Ponte Vecchio">
+                            </div>
+                            <!-- Immagine 3: Corridoio Vasariano (Placeholder migliorato) -->
+                            <div class="carousel-item h-100">
+                                <img src="Immagini/Ponte_Vecchio3.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Dettaglio del Corridoio Vasariano">
+                            </div>
+                        </div>
+                        
+                        <!-- Controlli -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPonteVecchio" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Precedente</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPonteVecchio" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Successivo</span>
+                        </button>
+                    </div>
+                </div> <!-- FINE COLONNA 1 INVERTITA (Carousel) -->
+                
+                <!-- COLONNA 2: TESTO -->
+                <div class="col-md-6">
+                    <div class="card-body p-4">
+                        <!-- Usa text-primary -->
+                        <h3 class="card-title fw-bold text-primary">Ponte Vecchio</h3>
+                        <p class="card-text lead">Uno dei ponti più famosi al mondo, unico nel suo genere con le botteghe artigiane.</p>
+                        
+                        <!-- Bottone per i dettagli extra (usa btn-outline-primary) -->
+                        <div class="d-grid">
+                            <button class="btn btn-outline-primary mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePonteVecchio" aria-expanded="false" aria-controls="collapsePonteVecchio">
+                                Scopri di più
+                            </button>
+                        </div>
+                        
+                        <!-- COLLAPSE per i dettagli extra -->
+                        <div class="collapse mt-3" id="collapsePonteVecchio">
+                            <div class="card card-body bg-light border-0">
+                                <p>Il Ponte Vecchio è il ponte più antico di Firenze e uno dei simboli della città. Famoso per le botteghe artigiane (orafi e gioiellieri) e per il Corridoio Vasariano che lo sovrasta.</p>
+                                <ul>
+                                    <li><strong>Orari:</strong> Sempre accessibile. Le botteghe hanno orari propri.</li>
+                                    <li><strong>Costo:</strong> Gratuito per attraversarlo.</li>
+                                    <li><strong>Indirizzo:</strong> Ponte Vecchio, 50125 Firenze FI</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> <!-- FINE card-body -->
+                </div> <!-- FINE COLONNA 2 (Testo) -->
+            </div> <!-- FINE ROW g-0 -->
+        </div> <!-- FINE CARD 2 -->
+
+        
+        <!-- CARD 3 – Galleria degli Uffizi -->
+        <div class="card mb-5 shadow-lg border-0 overflow-hidden">
+            <div class="row g-0">
+                <!-- COLONNA 1: CAROUSEL (Immagini) -->
+                <div class="col-md-6 carousel-col-height">
+                    <div id="carouselUffizi" class="carousel slide carousel-fade h-100" data-bs-ride="carousel">
+                        
+                        <div class="carousel-inner h-100 rounded-start-3 rounded-end-0">
+                            <!-- Immagine 1: Galleria Uffizi (Placeholder migliorato) -->
+                            <div class="carousel-item active h-100">
+                                <img src="Immagini/Piazza_Signoria1.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Cortile della Galleria degli Uffizi">
+                            </div>
+                            <!-- Immagine 2: Nascita di Venere (Placeholder migliorato) -->
+                            <div class="carousel-item h-100">
+                                <img src="Immagini/Piazza_Signoria2.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="Nascita di Venere di Botticelli">
+                            </div>
+                            <!-- Immagine 3: Primavera (Placeholder migliorato) -->
+                            <div class="carousel-item h-100">
+                                <img src="Immagini/Piazza_Signoria3.jpg" 
+                                    class="d-block w-100 img-fluid object-fit-cover h-100" 
+                                    alt="La Primavera di Botticelli">
+                            </div>
+                        </div>
+                        
+                        <!-- Controlli -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUffizi" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Precedente</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselUffizi" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Successivo</span>
+                        </button>
+                    </div>
+                </div> <!-- FINE COLONNA 1 (Carousel) -->
+                
+                <!-- COLONNA 2: TESTO -->
+                <div class="col-md-6">
+                    <div class="card-body p-4">
+                        <!-- Usa text-primary -->
+                        <h3 class="card-title fw-bold text-primary">Galleria degli Uffizi</h3>
+                        <p class="card-text lead">Uno dei musei d'arte più famosi e antichi del mondo, con capolavori rinascimentali.</p>
+                        
+                        <!-- Bottone per i dettagli extra (usa btn-outline-primary) -->
+                        <div class="d-grid">
+                            <button class="btn btn-outline-primary mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUffizi" aria-expanded="false" aria-controls="collapseUffizi">
+                                Scopri di più
+                            </button>
+                        </div>
+                        
+                        <!-- COLLAPSE per i dettagli extra -->
+                        <div class="collapse mt-3" id="collapseUffizi">
+                            <div class="card card-body bg-light border-0">
+                                <p>La Galleria degli Uffizi ospita una delle più importanti collezioni d'arte del mondo. Tra i capolavori esposti si trovano la "Nascita di Venere" e la "Primavera" di Botticelli.</p>
+                                <ul>
+                                    <li><strong>Orari:</strong> Variabili, chiusi il lunedì. Prenotazione fortemente consigliata.</li>
+                                    <li><strong>Costo:</strong> Biglietto a pagamento.</li>
+                                    <li><strong>Indirizzo:</strong> Piazzale degli Uffizi, 6, 50122 Firenze FI</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> <!-- FINE card-body -->
+                </div> <!-- FINE COLONNA 2 (Testo) -->
+            </div> <!-- FINE ROW g-0 -->
+        </div> <!-- FINE CARD 3 -->
+        
+    </div>
+</section>
+
+<!-- Bootstrap JS CDN (Obbligatorio per Carousel e Collapse) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <footer>
+        <div>&copy; Firenze - Davide, Alexandra & Vittorio.</div>
+    </footer>
+
+    <script src="../Account/script.js"></script>
+
+</body>
+</html>
