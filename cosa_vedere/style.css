@@ -40,7 +40,7 @@ nav {
 }
 
 /* Stile dei pulsanti presenti nell'header */
-.btn {
+.btnaccedi {
     background: var(--accent);
     color: #fff;
     padding: 8px 12px;
@@ -53,7 +53,7 @@ nav {
     font-size: 1rem;
 }
 
-.btn.secondary {
+.btnaccedi.secondaryaccedi {
     background: transparent;
     color: var(--accent);
     border: 1px solid var(--accent);
@@ -87,4 +87,73 @@ main {
     max-width:420px;
     margin:40px auto;
     /* ... resto del codice ... */
+}
+
+
+/* ==================================================
+   STILI PERSONALIZZATI PER SOVRASCRIVERE BOOTSTRAP
+   Colore Primario: #9b3d2b (Marrone terracotta)
+   ================================================== */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f7;
+}
+/* 1. TESTO PRIMARIO (Titoli Card e Titolo Sezione) */
+.text-primary {
+    color: #9b3d2b !important;
+}
+/* 2. BOTTONE OUTLINE PRIMARY (Bordo e Testo) */
+.btn-outline-primary {
+    color: #9b3d2b;
+    border-color: #9b3d2b;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    color: white;
+    background-color: #9b3d2b;
+    border-color: #9b3d2b;
+}
+/* 3. CARD: Bordo Superiore, Ombra e Animazione */
+.card {
+    border-top: 5px solid #9b3d2b; /* Bordo superiore che riprende il colore primario */
+    transition: transform 0.3s ease-in-out;
+    border-radius: 0.75rem !important; /* Rendi gli angoli più arrotondati */
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important; 
+}
+/* 4. LAYOUT CAROUSEL PER ALTEZZA FISSA SU MOBILE/DESKTOP */
+.carousel-col-height {
+    height: 300px; 
+}
+@media (min-width: 768px) {
+    .carousel-col-height {
+        height: 400px; 
+    }
+}
+
+.carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+/* 5. TITOLO PRINCIPALE */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem !important;
+    padding-top: 1rem;
+}
+footer {
+    position: sticky;
+    bottom: 0;
+
+    margin: 10px auto 0;
+    padding: 12px 16px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    background: #F7F7F7;
+    z-index: 999;
 }

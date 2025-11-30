@@ -104,3 +104,16 @@ a.btn:first-of-type:focus {
   background-color: var(--accent) !important;
   color: #fff !important;
 }
+footer {
+    position: sticky;
+    bottom: 0;
+    max-width: 1100px;
+    margin: 10px auto 0;
+    padding: 12px 16px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    background: #F8F9FA;
+    z-index: 999;
+}

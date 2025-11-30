@@ -298,23 +298,20 @@ color: var(--accent) colora il titolo in rosso (colore principale)
 
 /* ============================================================================
 FOOTER - Piè di pagina con copyright
-============================================================================
-max-width: 1100px limita la larghezza massima
-margin: 10px auto 40px margini (sopra, lati, sotto)
-padding: 12px 16px spazio interno
-color: #666 colore grigio
-font-size: 14px testo piccolo
-text-align: center centra il testo
-border-top: 1px solid #eee aggiunge una linea sottile sopra
+
 ============================================================================ */
 footer {
+    position: sticky;
+    bottom: 0;
     max-width: 1100px;
-    margin: 10px auto 40px;
+    margin: 10px auto 0;
     padding: 12px 16px;
     color: #666;
     font-size: 14px;
     text-align: center;
     border-top: 1px solid #eee;
+    background: #f7f5f2;
+    z-index: 999;
 }
 
 /* ============================================================================

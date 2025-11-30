@@ -22,7 +22,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 12px 16px;
-    background: linear-gradient(90deg, #fff, #f3ece8);
+    background: linear-gradient(90deg, #ffffff, #f3ece8);
     position: sticky;
     top: 0;
     z-index: 1000; /* Assicura che stia sopra gli altri elementi */
@@ -88,4 +88,30 @@ nav {
     max-width: 420px;
     margin: 40px auto;
     /* ... resto del codice ... */
+}
+
+
+/* Stile aggiuntivo per assicurare l'altezza corretta e l'oggetto fit */
+.object-fit-cover {
+    object-fit: cover;
+}
+/* Stile per nascondere le tab non attive (gestito in JS) */
+.tab-pane {
+    display: none;
+}
+.tab-pane.active {
+    display: block;
+}
+footer {
+    position: sticky;
+    bottom: 0;
+
+    margin: 10px auto 0;
+    padding: 12px 16px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    background: #F9FAFB;
+    z-index: 999;
 }

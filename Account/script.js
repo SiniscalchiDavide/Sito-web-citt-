@@ -356,7 +356,7 @@ function checkLoginStatus() {
         nav.innerHTML = `
             <div style="display:flex; align-items:center; gap:10px;">
                 <span class="welcome-msg" style="font-weight:bold; color:#333;">Ciao, ${displayName}</span>
-                <button class="btn secondary" onclick="logout()" style="font-size:0.9rem; padding:4px 10px;">Esci</button>
+                <button class="btn secondary btnaccedi secondaryaccedi" onclick="logout()" style="font-size:0.9rem; padding:4px 10px;">Esci</button>
             </div>
         `;
     }
@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const protectedLinks = [
     '../cibi/cibi.html',
     '../cosa_vedere/cosa_vedere.html',
-    '../eventi/eventi.html',
+    '../Storia_in_breve/Storia_in_breve.html',
     '../gite/gite.html',
     '../personaggi/presonaggi.html'
 ];
